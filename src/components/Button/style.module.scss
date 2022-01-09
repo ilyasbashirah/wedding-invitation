@@ -1,0 +1,67 @@
+@import './variables';
+
+@mixin sizeButton($sizeWidth, $sizeHeight, $name) {
+  &--#{$name} {
+    @if $sizeWidth != null {
+      width: $sizeWidth;
+    }
+    @if $sizeHeight != null {
+      height: $sizeHeight;
+    }
+  }
+}
+
+@mixin variantButton($background, $border, $name) {
+  &--#{$name} {
+    @if $size != null {
+      background-color: $background;
+    }
+    @if $border != null {
+      border: $border;
+    }
+  }
+}
+
+@mixin paramsController(
+  $name,
+  $params1: null,
+  $params2: null,
+  $params: 'size'
+) {
+  @if $params == 'size' {
+    @include sizeButton($params1, $params2, $name);
+  } @else {
+    @include variantButton($params1, $params2, $name);
+  }
+}
+
+@mixin deviceController($data, $params) {
+  @each $name, $property in $data {
+    @if map-has-key($data, $name) {
+      @include paramsController(
+        $name,
+        //width
+        nth($property, 1),
+        //height
+        nth($property, 2),
+        // params
+        $params
+      );
+    }
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include deviceController($variant, 'variant');
+  border-radius: 8px;
+  @include deviceController($size, 'size');
+  padding: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  &-opacity {
+    opacity: 0.15;
+  }
+}

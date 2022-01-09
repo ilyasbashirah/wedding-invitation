@@ -1,0 +1,69 @@
+@import '../../../styles/scss/global/colors';
+@import '../../../styles/scss/tools/color';
+@import './_variables.scss';
+
+@mixin align-list($map) {
+  @each $align-name, $align-selected in $map {
+    @if not map-has-key($map, $align-name) {
+      &--#{$align-name} {
+        text-align: left;
+      }
+    } @else {
+      &--#{$align-name} {
+        text-align: $align-selected;
+      }
+    }
+  }
+}
+
+// config global typography
+@mixin typography(
+  $name,
+  $size: null,
+  $lineHeight: null,
+  $weight: null,
+  $device: 'mobile'
+) {
+  &-#{$device}--#{$name} {
+    @if $size != null {
+      font-size: $size;
+    }
+    @if $lineHeight != null {
+      line-height: $lineHeight;
+    }
+    @if $weight != null {
+      font-weight: $weight;
+    }
+  }
+}
+
+@mixin deviceFont($device, $data) {
+  @each $font-name, $property in $data {
+    @if map-has-key($data, $font-name) {
+      @include typography(
+        $font-name,
+        //font-size
+        nth($property, 1),
+        //line-height
+        nth($property, 2),
+        // font-weight
+        nth($property, 3),
+        // device
+        $device
+      );
+    }
+  }
+}
+
+.typography {
+  font-family: 'Avenir-Next';
+  font-style: normal;
+  @include deviceFont('web', $fontNamesWeb);
+}
+
+.typography-color {
+  @include color-list($colors);
+}
+.typography-align {
+  @include align-list($aligns);
+}
