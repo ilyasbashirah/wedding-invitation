@@ -4,7 +4,7 @@ const path = require('path');
 //   path: `./deploy/environment/.env.${process.env.BRIBRAIN_ENV}`,
 // });
 module.exports = {
-  // dir: './src',
+  dir: './src',
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
@@ -18,8 +18,8 @@ module.exports = {
   //     },
   //   ];
   // },
-  webpack(config) {
-    config.plugins.push(new webpack.EnvironmentPlugin(myEnv));
-    return config;
-  },
+  // webpack(config) {
+  //   config.plugins.push(new webpack.EnvironmentPlugin(myEnv));
+  //   return config;
+  // },
 };

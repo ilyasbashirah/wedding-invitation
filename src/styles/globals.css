@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -9,6 +9,21 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+} */
+html {
+  overflow: auto;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Poppins;
+  line-height: 1.6;
+  font-size: 18px;
 }
 
 * {
