@@ -1,5 +1,9 @@
 import * as React from "react";
 import style from "./style.module.scss";
+import Banner from "@/src/components/Banner";
+import Typography from "@/src/components/Typography";
+import { useRouter } from "next/router";
+import Section from "@/src/components/Section";
 
 export interface WeddingGiftProps {}
 
@@ -22,9 +26,47 @@ export default function WeddingGift(props: WeddingGiftProps) {
       ina: "Kirim Hadiah",
     },
   };
+
+  const router = useRouter();
+
+  const routePathname: string = router.pathname;
+  const translate = routePathname.includes("en") ? "en" : "ina";
+  const titleText: string = textDatas.title[translate];
+  const description1Text: string = textDatas.description1[translate];
+  const description2Text: string = textDatas.description2[translate];
+
   return (
-    <div>
-      <div></div>
-    </div>
+    <Banner
+      height={"wedding-gift"}
+      align={"flex-start"}
+      background={"/desktop/weddinggift/weddinggift_background.svg"}
+    >
+      <Section gap={36} align={"flex-start"} justify={"center"}>
+        <Typography
+          variant={"heading-2-regular"}
+          color={"cooper"}
+          family={"greatvibes"}
+          align={"center"}
+        >
+          {titleText}
+        </Typography>
+        <Typography
+          variant={"body-1-medium"}
+          color={"onyx"}
+          family={"montserrat"}
+          align={"center"}
+        >
+          {description1Text}
+        </Typography>
+        <Typography
+          variant={"body-1-medium"}
+          color={"onyx"}
+          family={"montserrat"}
+          align={"center"}
+        >
+          {description2Text}
+        </Typography>
+      </Section>
+    </Banner>
   );
 }

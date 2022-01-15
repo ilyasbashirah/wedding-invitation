@@ -3,47 +3,29 @@ import style from "./style.module.scss";
 import { Color } from "@/src/styles/typescript/types/color";
 
 type Variant =
-  | "heading-1-medium"
-  | "heading-1-demibold"
-  | "heading-1-bold"
-  | "heading-2-medium"
-  | "heading-2-demibold"
-  | "heading-2-bold"
-  | "heading-3-medium"
-  | "heading-3-demibold"
+  | "heading-1-regular"
+  | "heading-2-regular"
   | "heading-3-bold"
-  | "subtitle-1-medium"
-  | "subtitle-1-demibold-1"
-  | "subtitle-1-demibold-2"
-  | "subtitle-bold"
-  | "subtitle-2-medium"
-  | "subtitle-2-demibold"
+  | "subtitle-1-bold"
   | "subtitle-2-bold"
-  | "subtitle-3-medium-1"
-  | "subtitle-3-medium-2"
-  | "subtitle-3-demibold"
-  | "subtitle-3-bold-1"
-  | "subtitle-3-bold-2"
-  | "subtitle-3-regular"
-  | "subtitle-4-medium"
-  | "subtitle-4-demibold"
-  | "subtitle-4-bold"
-  | "body-regular"
-  | "body-medium-1"
-  | "body-medium-2"
-  | "body-medium-3"
-  | "body-demibold-1"
-  | "body-demibold-2"
-  | "body-bold"
-  | "caption-regular"
-  | "caption-medium"
-  | "caption-demibold"
-  | "caption-bold";
+  | "subtitle-2-semibold"
+  | "body-1-bold"
+  | "body-1-semibold"
+  | "body-1-medium"
+  | "body-2-semibold"
+  | "body-3-bold"
+  | "body-3-medium"
+  | "body-4-medium"
+  | "caption-1-bold";
 
 type Align = "left" | "right" | "center";
 const Typography = ({
   children,
-  ...props
+  variant = "heading-2-regular",
+  align = "left",
+  color = "light-gray",
+  paragraph = true,
+  family = "montserrat",
 }: {
   children?: string;
   variant?: Variant;
@@ -51,17 +33,20 @@ const Typography = ({
   color?: Color;
   device?: string;
   paragraph?: boolean;
+  family?: "montserrat" | "greatvibes";
 }): ReactElement => {
-  const deviceFontVariant: string = `typography-web--${props.variant}`;
+  const deviceFontVariant: string = `typography--${variant}`;
 
   const fontStyles: string = `${style.typography} ${
-    style[`typography-color--${props.color}`]
-  } ${style[deviceFontVariant]} ${style[`typography-align--${props.align}`]}
+    style[`typography-color--${color}`]
+  } ${style[deviceFontVariant]} ${style[`typography-align--${align}`]} ${
+    style[`typography-family--${family}`]
+  }
 `;
 
   return (
     <>
-      {props.paragraph ? (
+      {paragraph ? (
         <div className={fontStyles}>{`${children}`}</div>
       ) : (
         <span className={fontStyles}>{`${children}`}</span>
@@ -70,11 +55,4 @@ const Typography = ({
   );
 };
 
-Typography.defaultProps = {
-  device: "mobile",
-  color: "primary-00",
-  align: "left",
-  variant: "body-1-bold",
-  paragraph: false,
-};
 export default Typography;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import style from "./style.module.scss";
+import Banner from "@/src/components/Banner";
 
 export interface ClosingProps {}
 
@@ -23,8 +24,9 @@ export default function Closing(props: ClosingProps) {
     },
   };
   return (
-    <div>
-      <div>test</div>
-    </div>
+    <Banner
+      height={"closing"}
+      background={"/desktop/closing/closing_background.svg"}
+    />
   );
 }

@@ -1,6 +1,8 @@
-@import '../../../styles/scss/global/colors';
-@import '../../../styles/scss/tools/color';
-@import './_variables.scss';
+@import "../../styles/scss/global/colors";
+@import "../../styles/scss/global/align";
+@import "../../styles/scss/global/font_name";
+@import "../../styles/scss/tools/color";
+@import "../../styles/scss/global/family";
 
 @mixin align-list($map) {
   @each $align-name, $align-selected in $map {
@@ -16,15 +18,23 @@
   }
 }
 
+@mixin family-list($map) {
+  @each $align-name, $align-selected in $map {
+    @if not map-has-key($map, $align-name) {
+      &--#{$align-name} {
+        font-family:'Montserrat', sans-serif;
+      }
+    } @else {
+      &--#{$align-name} {
+        font-family: $align-selected;
+      }
+    }
+  }
+}
+
 // config global typography
-@mixin typography(
-  $name,
-  $size: null,
-  $lineHeight: null,
-  $weight: null,
-  $device: 'mobile'
-) {
-  &-#{$device}--#{$name} {
+@mixin typography($name, $size: null, $lineHeight: null, $weight: null) {
+  &--#{$name} {
     @if $size != null {
       font-size: $size;
     }
@@ -37,7 +47,7 @@
   }
 }
 
-@mixin deviceFont($device, $data) {
+@mixin fontVariant($data) {
   @each $font-name, $property in $data {
     @if map-has-key($data, $font-name) {
       @include typography(
@@ -47,23 +57,24 @@
         //line-height
         nth($property, 2),
         // font-weight
-        nth($property, 3),
-        // device
-        $device
+        nth($property, 3)
       );
     }
   }
 }
 
 .typography {
-  font-family: 'Avenir-Next';
   font-style: normal;
-  @include deviceFont('web', $fontNamesWeb);
+  @include fontVariant($fontName);
 }
 
 .typography-color {
   @include color-list($colors);
 }
 .typography-align {
-  @include align-list($aligns);
+  @include align-list($align);
+}
+
+.typography-family {
+  @include family-list($family);
 }

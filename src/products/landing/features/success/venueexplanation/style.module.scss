@@ -1,0 +1,9 @@
+.venue-list-explanation {
+  display: grid;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  grid-template-columns: 16px auto;
+  column-gap: 12px;
+}

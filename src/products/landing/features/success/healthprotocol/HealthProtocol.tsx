@@ -1,5 +1,7 @@
 import * as React from "react";
 import style from "./style.module.scss";
+import Typography from '@/src/components/Typography'
+import { useRouter } from "next/router";
 
 export interface HealthProtocolProps {}
 
@@ -28,9 +30,32 @@ export default function HealthProtocol(props: HealthProtocolProps) {
       },
     },
   };
+  const router = useRouter();
+
+  const routePathname: string = router.pathname;
+  const translate = routePathname.includes("en") ? "en" : "ina";
+  const titleText: string = textDatas.title[translate];
+  const descriptionText: string = textDatas.description[translate];
+
   return (
-    <div>
-      <div></div>
-    </div>
+    <>
+      <Typography
+        variant={"heading-2-regular"}
+        color={"cooper"}
+        family={"greatvibes"}
+        align={'center'}
+      >
+        {titleText}
+      </Typography>
+      <Typography
+        variant={"body-1-medium"}
+        color={"onyx"}
+        family={"montserrat"}
+        align={'center'}
+      >
+        {descriptionText}
+      </Typography>
+      
+    </>
   );
 }

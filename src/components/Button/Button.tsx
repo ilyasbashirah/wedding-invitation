@@ -39,7 +39,7 @@ export default function ButtonBase({
     >
       {children}
       <Typography
-        variant={"subtitle-4-bold"}
+        variant={"heading-1-regular"}
         align="center"
         color={variant === "primary" ? "white" : "cooper"}
       >
