@@ -2,7 +2,7 @@ import * as React from "react";
 import style from "./style.module.scss";
 export interface SectionProps {
   children?: React.ReactNode;
-  gap?: 32 | 36;
+  gap?: 32 | 36 | 44;
   align?: "flex-start" | "center" | "flex-end";
   justify?: "flex-start" | "center" | "flex-end";
 }

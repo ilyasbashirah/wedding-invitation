@@ -3,9 +3,6 @@
 @import "../../styles/scss/global/grid_justify";
 .section-width-1240 {
   display: grid;
-  //   width: 1240px;
-  //   box-sizing: content-box;
-  //   height:fit-content
 }
 
 @mixin section-gap($map) {
@@ -63,5 +60,5 @@
 }
 
 .section-justify {
-  @include section-align($grid-justify);
+  @include section-justify($grid-justify);
 }

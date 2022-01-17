@@ -112,6 +112,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
+    "@react-google-maps/api": "^2.7.0",
     "@storybook/addon-actions": "^6.1.17",
     "@storybook/addon-essentials": "^6.1.17",
     "@storybook/addon-links": "^6.1.17",
@@ -122,6 +123,7 @@
     "@testing-library/react": "^11.2.7",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/googlemaps": "^3.43.3",
     "@types/ioredis": "^4.26.4",
     "@types/jest": "^26.0.20",
     "@types/moment": "^2.13.0",
@@ -160,6 +162,7 @@
     "jest": "^27.0.6",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
+    "react-google-maps": "^9.4.5",
     "redux-immutable-state-invariant": "^2.1.0",
     "sass": "^1.38.1",
     "sass-loader": "^12.1.0",

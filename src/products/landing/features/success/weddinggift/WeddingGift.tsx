@@ -4,6 +4,7 @@ import Banner from "@/src/components/Banner";
 import Typography from "@/src/components/Typography";
 import { useRouter } from "next/router";
 import Section from "@/src/components/Section";
+import Button from "@/src/components/Button";
 
 export interface WeddingGiftProps {}
 
@@ -19,7 +20,7 @@ export default function WeddingGift(props: WeddingGiftProps) {
     },
     description2: {
       en: "Tap the following button to send to us",
-      ina: "Silakan klik button berikut untuk mengirimkan",
+      ina: "Silakan klik tombol berikut untuk mengirimkan",
     },
     buttonKirim: {
       en: "Send Gift",
@@ -34,11 +35,12 @@ export default function WeddingGift(props: WeddingGiftProps) {
   const titleText: string = textDatas.title[translate];
   const description1Text: string = textDatas.description1[translate];
   const description2Text: string = textDatas.description2[translate];
-
+  const textButton: string = "Kirim Hadiah";
   return (
     <Banner
       height={"wedding-gift"}
       align={"flex-start"}
+      justify={"center"}
       background={"/desktop/weddinggift/weddinggift_background.svg"}
     >
       <Section gap={36} align={"flex-start"} justify={"center"}>
@@ -66,6 +68,7 @@ export default function WeddingGift(props: WeddingGiftProps) {
         >
           {description2Text}
         </Typography>
+        <Button text={textButton} />
       </Section>
     </Banner>
   );

@@ -7,7 +7,8 @@ import OurGallery from "../features/success/ourgallery/OurGallery";
 import WeddingGift from "../features/success/weddinggift/WeddingGift";
 import Closing from "../features/success/closing/Closing";
 import Banner from "@/src/components/Banner";
-import Section from '@/src/components/Section'
+import Section from "@/src/components/Section";
+import Footer from "@/src/products/landing/features/success/footer";
 
 export interface ILandingPage {}
 
@@ -17,18 +18,19 @@ export default function LandingPage(props: ILandingPage) {
       <Counting />
       <BrideGroom />
       <Banner
-        height={'venue-and-protocol'}
-        align={'flex-start'}
+        height={"venue-and-protocol"}
+        align={"flex-start"}
         background={"/desktop/venueandprotocol/venueandprotocol_background.svg"}
       >
-          <Section gap={36} align={"flex-start"} justify={"center"}>
-        <MapsLocation />
-        <HealthProtocol />
+        <Section gap={44} align={"flex-start"} justify={"center"}>
+          <MapsLocation />
+          <HealthProtocol />
         </Section>
       </Banner>
       <OurGallery />
       <WeddingGift />
       <Closing />
+      <Footer />
     </div>
   );
 }

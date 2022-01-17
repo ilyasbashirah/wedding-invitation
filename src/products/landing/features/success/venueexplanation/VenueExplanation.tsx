@@ -2,6 +2,7 @@ import Card from "@/src/components/Card";
 import Typography from "@/src/components/Typography";
 import * as React from "react";
 import style from "./style.module.scss";
+import Button from "@/src/components/Button";
 
 export interface VenueExplanationProps {}
 
@@ -54,44 +55,52 @@ export default function VenueExplanation(props: VenueExplanationProps) {
   };
   return (
     <Card>
-      {Object.keys(textDatas).map((key: any) => {
-        return (
-          <>
-            {Object.keys(textDatas[key]).map((keyAspect: any) => {
-              if (keyAspect !== "title") {
-                return (
-                  <div
-                    key={`venue-explanation-${keyAspect}`}
-                    className={style["venue-list-explanation"]}
-                  >
-                    <img
-                      src={`/desktop/venueandprotocol/venue/icons/${textDatas[key][keyAspect]["icon"]}`}
-                    />
-                    <Typography
-                      family={"montserrat"}
-                      variant={"body-4-medium"}
-                      color={"cooper"}
-                    >
-                      {textDatas[key][keyAspect]["ina"]}
-                    </Typography>
-                  </div>
-                );
-              } else {
-                return (
-                  <Typography
-                    key={`venue-explanation-${key}`}
-                    family={"montserrat"}
-                    variant={"body-1-bold"}
-                    color={"cooper"}
-                  >
-                    {textDatas[key]["title"]["ina"]}
-                  </Typography>
-                );
-              }
-            })}
-          </>
-        );
-      })}
+      <div className={style["container-venue-explanation"]}>
+        <div>
+          {Object.keys(textDatas).map((key: any) => {
+            return (
+              <div className={style["container-list-info"]}>
+                {Object.keys(textDatas[key]).map((keyAspect: any) => {
+                  if (keyAspect !== "title") {
+                    return (
+                      <div
+                        key={`venue-explanation-${keyAspect}`}
+                        className={style["venue-list-explanation"]}
+                      >
+                        <img
+                          src={`/desktop/venueandprotocol/venue/icons/${textDatas[key][keyAspect]["icon"]}`}
+                        />
+                        <Typography
+                          family={"montserrat"}
+                          variant={"body-4-medium"}
+                          color={"cooper"}
+                        >
+                          {textDatas[key][keyAspect]["ina"]}
+                        </Typography>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <Typography
+                        key={`venue-explanation-${key}`}
+                        family={"montserrat"}
+                        variant={"body-1-bold"}
+                        color={"cooper"}
+                      >
+                        {textDatas[key]["title"]["ina"]}
+                      </Typography>
+                    );
+                  }
+                })}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className={style["section-button"]}>
+          <Button text={"Send invitation"} />
+        </div>
+      </div>
     </Card>
   );
 }

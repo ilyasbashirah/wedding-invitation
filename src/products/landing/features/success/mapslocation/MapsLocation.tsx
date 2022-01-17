@@ -29,7 +29,7 @@ export default function MapsLocation(props: MapsLocationProps) {
   const prayText: string = textDatas.doa[translate];
   const dateText: string = textDatas.date[translate];
   return (
-    <>
+    <div className={style["section-maps-location-title"]}>
       <Typography
         variant={"heading-2-regular"}
         color={"cooper"}
@@ -38,27 +38,29 @@ export default function MapsLocation(props: MapsLocationProps) {
       >
         {titleText}
       </Typography>
-      <Typography
-        variant={"body-1-medium"}
-        color={"onyx"}
-        family={"montserrat"}
-        align={"center"}
-      >
-        {prayText}
-      </Typography>
-      <Typography
-        variant={"subtitle-2-bold"}
-        color={"cooper"}
-        family={"montserrat"}
-        align={"center"}
-      >
-        {dateText}
-      </Typography>
+      <div className={style["section-maps-location-description"]} >
+        <Typography
+          variant={"body-1-medium"}
+          color={"onyx"}
+          family={"montserrat"}
+          align={"center"}
+        >
+          {prayText}
+        </Typography>
+        <Typography
+          variant={"subtitle-2-bold"}
+          color={"cooper"}
+          family={"montserrat"}
+          align={"center"}
+        >
+          {dateText}
+        </Typography>
 
-      <div className={style["section-card-maps-location"]}>
-        <VenueMaps />
-        <VenueExplanation />
+        <div className={style["section-card-maps-location"]}>
+          <VenueMaps />
+          <VenueExplanation />
+        </div>
       </div>
-    </>
+    </div>
   );
 }

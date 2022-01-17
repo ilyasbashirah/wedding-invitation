@@ -1,6 +1,6 @@
 import * as React from "react";
 import style from "./style.module.scss";
-import Typography from '@/src/components/Typography'
+import Typography from "@/src/components/Typography";
 import { useRouter } from "next/router";
 
 export interface HealthProtocolProps {}
@@ -17,14 +17,17 @@ export default function HealthProtocol(props: HealthProtocolProps) {
     },
     aspect: {
       mask: {
+        img: "/desktop/venueandprotocol/protocol/protocol_masker.svg",
         en: "Must use masks during the event a Mask",
         ina: "Menggunakan masker selama acara berlangsung",
       },
       soap: {
+        img: "/desktop/venueandprotocol/protocol/protocol_sabun.svg",
         en: "Wash your hands frequently, using soap for about 20 seconds",
         ina: "Cuci tangan rutin dengan sabun selama minimal 20 detik",
       },
       distance: {
+        img: "/desktop/venueandprotocol/protocol/protocol_jagajarak.svg",
         en: "Keep distance from others min 1,5 meters",
         ina: "Saling menjaga jarak dengan orang sekitar minimal 1,5 meter",
       },
@@ -43,7 +46,7 @@ export default function HealthProtocol(props: HealthProtocolProps) {
         variant={"heading-2-regular"}
         color={"cooper"}
         family={"greatvibes"}
-        align={'center'}
+        align={"center"}
       >
         {titleText}
       </Typography>
@@ -51,11 +54,28 @@ export default function HealthProtocol(props: HealthProtocolProps) {
         variant={"body-1-medium"}
         color={"onyx"}
         family={"montserrat"}
-        align={'center'}
+        align={"center"}
       >
         {descriptionText}
       </Typography>
-      
+
+      <div className={style["container-box-health-protocol"]}>
+        {Object.keys(textDatas.aspect).map((item: any) => {
+          return (
+            <div className={style["box-health-protocol"]}>
+              <img src={textDatas.aspect[item]["img"]} />
+              <Typography
+                variant={"body-2-semibold"}
+                color={"onyx"}
+                family={"montserrat"}
+                align={"center"}
+              >
+                {textDatas.aspect[item][translate]}
+              </Typography>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }

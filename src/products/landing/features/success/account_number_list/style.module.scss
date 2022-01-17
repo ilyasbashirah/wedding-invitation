@@ -1,0 +1,36 @@
+.container-account-number-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.container-icon-account-number-list {
+  display: grid;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-items: flex-start;
+  justify-content: flex-start;
+  column-gap: 16px;
+}
+
+.box-bank-icon {
+  border: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.box-text-name-account-number {
+  display: grid;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  row-gap: 12px;
+}
