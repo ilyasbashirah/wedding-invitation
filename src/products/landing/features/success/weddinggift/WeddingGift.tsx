@@ -5,6 +5,7 @@ import Typography from "@/src/components/Typography";
 import { useRouter } from "next/router";
 import Section from "@/src/components/Section";
 import Button from "@/src/components/Button";
+import Modal from "@/src/components/Modal";
 
 export interface WeddingGiftProps {}
 
@@ -35,7 +36,7 @@ export default function WeddingGift(props: WeddingGiftProps) {
   const titleText: string = textDatas.title[translate];
   const description1Text: string = textDatas.description1[translate];
   const description2Text: string = textDatas.description2[translate];
-  const textButton: string = "Kirim Hadiah";
+  const textButton: string = textDatas.buttonKirim[translate];
   return (
     <Banner
       height={"wedding-gift"}
@@ -69,6 +70,9 @@ export default function WeddingGift(props: WeddingGiftProps) {
           {description2Text}
         </Typography>
         <Button text={textButton} />
+        {/* <Modal>
+          <div>hallsasdadsa</div>
+        </Modal> */}
       </Section>
     </Banner>
   );

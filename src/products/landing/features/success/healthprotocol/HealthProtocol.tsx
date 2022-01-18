@@ -60,9 +60,12 @@ export default function HealthProtocol(props: HealthProtocolProps) {
       </Typography>
 
       <div className={style["container-box-health-protocol"]}>
-        {Object.keys(textDatas.aspect).map((item: any) => {
+        {Object.keys(textDatas.aspect).map((item: any, index: number) => {
           return (
-            <div className={style["box-health-protocol"]}>
+            <div
+              key={`health-protocol-aspect-${index}`}
+              className={style["box-health-protocol"]}
+            >
               <img src={textDatas.aspect[item]["img"]} />
               <Typography
                 variant={"body-2-semibold"}
