@@ -59,7 +59,10 @@ export default function VenueExplanation(props: VenueExplanationProps) {
         <div>
           {Object.keys(textDatas).map((key: any) => {
             return (
-              <div className={style["container-list-info"]}>
+              <div
+                key={`list-info-${key}`}
+                className={style["container-list-info"]}
+              >
                 {Object.keys(textDatas[key]).map((keyAspect: any) => {
                   if (keyAspect !== "title") {
                     return (

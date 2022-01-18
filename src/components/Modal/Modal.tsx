@@ -12,9 +12,9 @@ export default function Modal({
   children?: React.ReactNode;
   handleOutside?: any;
 }) {
-  //   const ref = useRef(
-  //     typeof window !== undefined ? document.createElement("div") : <div />
-  //   );
+    // const ref = useRef(
+    //   typeof window !== undefined ? document.createElement("div") : <div />
+    // );
 
   const ref = useRef(
     typeof window !== undefined ? window.document.createElement("div") : <div />

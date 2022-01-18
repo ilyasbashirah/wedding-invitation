@@ -46,6 +46,62 @@ export default function OurGallery(props: OurGalleryProps) {
         >
           {descriptionText}
         </Typography>
+        {/* section photos */}
+        <div className={style["container-box-photos"]}>
+          <div>
+            <div
+              className={style["box-large-photos"]}
+              style={{
+                backgroundImage: `url("/desktop/gallery/photos/photos_left_1.svg")`,
+              }}
+            >
+              <div className={style["box-icons-large-photos-left"]}>
+                <img
+                  src={"/desktop/icons/arrow_left.svg"}
+                  width={32}
+                  height={32}
+                />
+              </div>
+              <div className={style["box-icons-large-photos-right"]}>
+                <img
+                  src={"/desktop/icons/arrow_right.svg"}
+                  width={32}
+                  height={32}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={style["container-box-photos-right"]}>
+            <div
+              className={style["box-photos"]}
+              style={{
+                backgroundImage: `url("/desktop/gallery/photos/photos_right_1.svg")`,
+              }}
+            />
+            <div
+              className={style["box-photos"]}
+              style={{
+                backgroundImage: `url("/desktop/gallery/photos/photos_right_2.svg")`,
+              }}
+            />
+            <div
+              className={style["box-photos"]}
+              style={{
+                backgroundImage: `url("/desktop/gallery/photos/photos_right_3.svg")`,
+              }}
+            >
+              <Typography
+                variant={"body-1-semibold"}
+                color={"white"}
+                family={"montserrat"}
+                align={"center"}
+              >
+                {"Lihat Selengkapnya"}
+              </Typography>
+            </div>
+          </div>
+          {/* end section photos */}
+        </div>
       </Section>
     </Banner>
   );
