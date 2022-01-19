@@ -67,71 +67,76 @@ export default function BrideGroom(props: BrideGroomProps) {
       justify={"center"}
       background={"/desktop/brideandgroom/brideandgroom_background.svg"}
     >
-      <Section gap={36} align={"flex-start"} justify={"center"}>
+      <Section gap={32} align={"flex-start"} justify={"center"}>
         <Typography
           variant={"heading-2-regular"}
           color={"cooper"}
           family={"greatvibes"}
-          align={'center'}
+          align={"center"}
         >
           {titleText}
         </Typography>
-        <Typography
-          variant={"body-1-medium"}
-          color={"onyx"}
-          family={"montserrat"}
-          align={'center'}
-        >
-          {quoteMeaningText}
-        </Typography>
-        <Typography
-          variant={"body-1-medium"}
-          color={"onyx"}
-          family={"montserrat"}
-          align={'center'}
-        >
-          {quoteSurahText}
-        </Typography>
-
-        <div className={style["container-bride-photos"]}>
-          <img src={"/desktop/brideandgroom/brideandgroom_yasmin.png"} />
-          <div className={style["container-identity"]}>
-            <Typography
-              variant={'subtitle-1-bold'}
-              color={"onyx"}
-              family={"montserrat"}
-            >
-              {brideNameText}
-            </Typography>
+        <Section gap={0} align={"flex-start"} justify={"center"}>
+          <Typography
+            variant={"body-1-medium"}
+            color={"onyx"}
+            family={"montserrat"}
+            align={"center"}
+          >
+            {quoteMeaningText}
+          </Typography>
+          <Section gap={12} align={"flex-start"} justify={"center"}>
             <Typography
               variant={"body-1-medium"}
               color={"onyx"}
               family={"montserrat"}
+              align={"center"}
             >
-              {brideIdentityText}
+              {quoteSurahText}
             </Typography>
-          </div>
-        </div>
+            <Section gap={0} align={"flex-start"} justify={"center"}>
+              <div className={style["container-bride-photos"]}>
+                <img src={"/desktop/brideandgroom/brideandgroom_yasmin.png"} />
+                <div className={style["container-identity"]}>
+                  <Typography
+                    variant={"subtitle-1-bold"}
+                    color={"onyx"}
+                    family={"montserrat"}
+                  >
+                    {brideNameText}
+                  </Typography>
+                  <Typography
+                    variant={"body-1-medium"}
+                    color={"onyx"}
+                    family={"montserrat"}
+                  >
+                    {brideIdentityText}
+                  </Typography>
+                </div>
+              </div>
 
-        <div className={style["container-groom-photos"]}>
-          <div className={style["container-identity"]}>
-            <Typography
-              variant={'subtitle-1-bold'}
-              color={"onyx"}
-              family={"montserrat"}
-            >
-              {groomNameText}
-            </Typography>
-            <Typography
-              variant={"body-1-medium"}
-              color={"onyx"}
-              family={"montserrat"}
-            >
-              {groomIdentityText}
-            </Typography>
-          </div>
-          <img src={"/desktop/brideandgroom/brideandgroom_bas.png"} />
-        </div>
+              <div className={style["container-groom-photos"]}>
+                <div className={style["container-identity"]}>
+                  <Typography
+                    variant={"subtitle-1-bold"}
+                    color={"onyx"}
+                    family={"montserrat"}
+                  >
+                    {groomNameText}
+                  </Typography>
+                  <Typography
+                    variant={"body-1-medium"}
+                    color={"onyx"}
+                    family={"montserrat"}
+                  >
+                    {groomIdentityText}
+                  </Typography>
+                </div>
+                <img src={"/desktop/brideandgroom/brideandgroom_bas.png"} />
+              </div>
+            </Section>
+          </Section>
+        </Section>
       </Section>
     </Banner>
     // </div>
