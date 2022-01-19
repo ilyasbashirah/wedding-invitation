@@ -94,7 +94,7 @@ export default function BrideGroom(props: BrideGroomProps) {
         </Typography>
 
         <div className={style["container-bride-photos"]}>
-          <img src={"/desktop/brideandgroom/brideandgroom_yasmin.svg"} />
+          <img src={"/desktop/brideandgroom/brideandgroom_yasmin.png"} />
           <div className={style["container-identity"]}>
             <Typography
               variant={'subtitle-1-bold'}
@@ -130,7 +130,7 @@ export default function BrideGroom(props: BrideGroomProps) {
               {groomIdentityText}
             </Typography>
           </div>
-          <img src={"/desktop/brideandgroom/brideandgroom_bas.svg"} />
+          <img src={"/desktop/brideandgroom/brideandgroom_bas.png"} />
         </div>
       </Section>
     </Banner>
