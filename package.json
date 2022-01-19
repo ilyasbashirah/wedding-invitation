@@ -72,6 +72,7 @@
     "build:uat": "cross-env WEDDING_ENV=uat next build",
     "build:stg": "cross-env WEDDING_ENV=staging next build",
     "build:local": "cross-env WEDDING_ENV=localhost next build",
+    "export": "next export",
     "start": "next start",
     "serve": "next start -p 4501",
     "build": "next build",

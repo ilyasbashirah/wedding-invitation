@@ -47,7 +47,7 @@ export default function OurGallery(props: OurGalleryProps) {
           {descriptionText}
         </Typography>
         {/* section photos */}
-        <div className={style["container-box-photos"]}>
+        <div className={style["container-box-photos-left"]}>
           <div>
             <div
               className={style["box-large-photos"]}
