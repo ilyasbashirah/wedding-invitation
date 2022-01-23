@@ -48,7 +48,6 @@ export default function PaymentAccountModal({
   };
 
   useEffect(() => {
-    console.log(open, "ini kepanggil ga sih");
     setState({ ...state, modal: open });
   }, [open]);
 
