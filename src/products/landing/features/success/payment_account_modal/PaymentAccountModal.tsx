@@ -63,7 +63,7 @@ export default function PaymentAccountModal({
     }
   };
   return (
-    <Modal open={state.modal}>
+    <Modal open={state.modal} handleOutside={handleCloseModal}>
       <div className={style["container-payment-account-modal"]}>
         <div className={style["container-header-modal"]}>
           <Typography

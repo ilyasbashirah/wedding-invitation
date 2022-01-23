@@ -12,13 +12,6 @@ export default function Modal({
   children?: React.ReactNode;
   handleOutside?: any;
 }) {
-  // const ref = useRef(
-  //   typeof window !== undefined ? document.createElement("div") : <div />
-  // );
-
-  const ref = useRef(
-    typeof window !== undefined ? window.document.createElement("div") : <div />
-  );
   const [state, setState] = useState({
     modal: false,
   });
@@ -29,18 +22,16 @@ export default function Modal({
   //     }
   //   });
 
-  useOnClickOutside(ref, () => {
-    setState(state);
-    // handleClose();
-  });
-
   useEffect(() => {
     setState({ ...state, modal: open });
-  }, [open]);
-
+  }, [open, state.modal]);
+  const handleClose = () => {
+    setState({ ...state, modal: false });
+    handleOutside();
+  };
   return (
     <>
-      <Backdrop open={state.modal}>
+      <Backdrop open={state.modal} handleCloseContent={handleClose}>
         {state.modal && <div className={style.modal}>{children}</div>}
       </Backdrop>
     </>
