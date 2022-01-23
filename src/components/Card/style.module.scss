@@ -13,12 +13,18 @@
 
 .container-inside-card {
   display: grid;
-  width:100%;
-  padding: 31px 20px;
+  width: 100%;
+
   align-content: flex-start;
   align-items: flex-start;
   justify-content: flex-start;
   justify-items: flex-start;
   border-radius: 20px;
   background-color: white;
+  &--padding {
+    padding: 31px 20px;
+  }
+  &--no-padding {
+    padding: 0px;
+  }
 }

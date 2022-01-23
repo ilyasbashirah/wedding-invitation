@@ -62,6 +62,7 @@ export default function BrideGroom(props: BrideGroomProps) {
   return (
     // <div className={style["container-bride-and-groom"]}>
     <Banner
+      id={"bride-and-groom"}
       height={"bride-and-groom"}
       align={"flex-start"}
       justify={"center"}

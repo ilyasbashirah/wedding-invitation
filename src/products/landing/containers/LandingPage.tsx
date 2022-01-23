@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import Counting from "@/src/products/landing/features/success/countingdown";
 import BrideGroom from "@/src/products/landing/features/success/brideandgroom";
 import MapsLocation from "@/src/products/landing/features/success/mapslocation";
@@ -9,12 +9,25 @@ import Closing from "../features/success/closing/Closing";
 import Banner from "@/src/components/Banner";
 import Section from "@/src/components/Section";
 import Footer from "@/src/products/landing/features/success/footer";
+import NavigationbarWedding from "@/src/products/landing/features/success/navigation_bar_wedding/NavigationBarWedding";
+import PaymentAccountModal from "@/src/products/landing/features/success/payment_account_modal/PaymentAccountModal";
 
 export interface ILandingPage {}
 
 export default function LandingPage(props: ILandingPage) {
+  const [state, setState] = useState({
+    modalKirimHadiah: false,
+  });
+
+  const handleKirimHadiah = () => {
+    setState({ ...state, modalKirimHadiah: true });
+  };
+  const handleCloseKirimHadiah = (condition:boolean) => {
+    setState({ ...state, modalKirimHadiah: condition });
+  };
   return (
     <div>
+      <NavigationbarWedding />
       <Counting />
       <BrideGroom />
       <Banner
@@ -28,9 +41,15 @@ export default function LandingPage(props: ILandingPage) {
         </Section>
       </Banner>
       <OurGallery />
-      <WeddingGift />
+      <WeddingGift handleClickKirimHadiah={handleKirimHadiah} />
       <Closing />
       <Footer />
+
+      {/* modal */}
+      <PaymentAccountModal
+        open={state.modalKirimHadiah}
+        handleBatalKirimHadiah={handleCloseKirimHadiah}
+      />
     </div>
   );
 }

@@ -1,5 +1,7 @@
 .container-footer {
   display: grid;
+  grid-template-columns: auto 16px;
+  column-gap: 4px;
   align-items: center;
   align-content: center;
   justify-items: center;

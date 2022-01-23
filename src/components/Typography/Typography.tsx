@@ -16,7 +16,10 @@ type Variant =
   | "body-3-bold"
   | "body-3-medium"
   | "body-4-medium"
-  | "caption-1-bold";
+  | "body-5-bold"
+  | "body-5-medium"
+  | "caption-1-bold"
+  | "button-2-bold";
 
 type Align = "left" | "right" | "center";
 const Typography = ({
@@ -26,6 +29,7 @@ const Typography = ({
   color = "light-gray",
   paragraph = true,
   family = "montserrat",
+  id = "typography",
 }: {
   children?: string;
   variant?: Variant;
@@ -34,6 +38,7 @@ const Typography = ({
   device?: string;
   paragraph?: boolean;
   family?: "montserrat" | "greatvibes";
+  id?: string;
 }): ReactElement => {
   const deviceFontVariant: string = `typography--${variant}`;
 
@@ -47,9 +52,9 @@ const Typography = ({
   return (
     <>
       {paragraph ? (
-        <div className={fontStyles}>{`${children}`}</div>
+        <div id={id} className={fontStyles}>{`${children}`}</div>
       ) : (
-        <span className={fontStyles}>{`${children}`}</span>
+        <span id={id} className={fontStyles}>{`${children}`}</span>
       )}
     </>
   );

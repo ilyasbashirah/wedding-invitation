@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import style from "./style.module.scss";
 import Banner from "@/src/components/Banner";
 import Typography from "@/src/components/Typography";
@@ -8,6 +8,9 @@ import Section from "@/src/components/Section";
 export interface OurGalleryProps {}
 
 export default function OurGallery(props: OurGalleryProps) {
+  const [state, setState] = useState({
+    carouselImage: "/desktop/gallery/photos/photos_left_1.svg",
+  });
   const textDatas = {
     title: {
       en: "Our Gallery",
@@ -23,8 +26,22 @@ export default function OurGallery(props: OurGalleryProps) {
   const translate = routePathname.includes("en") ? "en" : "ina";
   const titleText: string = textDatas.title[translate];
   const descriptionText: string = textDatas.description[translate];
+
+  const handleClickNextPhotos = () => {
+    setState({
+      ...state,
+      carouselImage: "/desktop/gallery/photos/photos_right_1.svg",
+    });
+  };
+  const handleClickPrevPhotos = () => {
+    setState({
+      ...state,
+      carouselImage: "/desktop/gallery/photos/photos_right_2.svg",
+    });
+  };
   return (
     <Banner
+      id={"our-gallery"}
       height={"our-gallery"}
       align={"flex-start"}
       background={"/desktop/gallery/gallery_background.svg"}
@@ -52,17 +69,23 @@ export default function OurGallery(props: OurGalleryProps) {
             <div
               className={style["box-large-photos"]}
               style={{
-                backgroundImage: `url("/desktop/gallery/photos/photos_left_1.svg")`,
+                backgroundImage: `url("${state.carouselImage}")`,
               }}
             >
-              <div className={style["box-icons-large-photos-left"]}>
+              <div
+                className={style["box-icons-large-photos-left"]}
+                onClick={handleClickPrevPhotos}
+              >
                 <img
                   src={"/desktop/icons/arrow_left.svg"}
                   width={32}
                   height={32}
                 />
               </div>
-              <div className={style["box-icons-large-photos-right"]}>
+              <div
+                className={style["box-icons-large-photos-right"]}
+                onClick={handleClickNextPhotos}
+              >
                 <img
                   src={"/desktop/icons/arrow_right.svg"}
                   width={32}

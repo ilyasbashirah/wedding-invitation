@@ -1,0 +1,120 @@
+.container-payment-account-modal {
+  background: #fefdfa;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 784px;
+  padding: 32px;
+  row-gap: 32px;
+  align-content: center;
+  align-items: center;
+  justify-items: flex-start;
+  justify-content: flex-start;
+
+  .container-header-modal {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .button-close-modal {
+      cursor: pointer;
+    }
+  }
+  .divider-payment-account {
+    border-top: 1px solid #000000;
+  }
+  .payment-method-options {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+    align-content: center;
+    align-items: center;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    .bank-account-payment-method {
+      display: grid;
+      row-gap: 16px;
+      width: 720px;
+      grid-template-columns: 1fr;
+      align-content: center;
+      align-items: center;
+      justify-items: flex-start;
+      justify-content: flex-start;
+
+      .container-bank-account-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+        width: 100%;
+      }
+
+      .box-copy-bank-account-list {
+        display: grid;
+        grid-template-columns: 1fr 120px;
+        // width:720px;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid #d0ad6b;
+        box-sizing: border-box;
+        border-radius: 10px;
+        padding: 16px;
+        .box-bank-account-list {
+          display: grid;
+          grid-template-columns: 80px 1fr;
+          column-gap: 16px;
+
+          .box-icon-bank-account {
+            background: #ffffff;
+            border: 1px solid #f2f2f2;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display: grid;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            align-content: center;
+          }
+          .box-description-bank-account {
+            display: grid;
+            row-gap: 12px;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            align-items: flex-start;
+            align-content: flex-start;
+          }
+        }
+
+        .button-copy-bank-account {
+          display: grid;
+          align-content: center;
+          align-items: center;
+          justify-content: center;
+          justify-items: center;
+          border-radius: 100px;
+          cursor: pointer;
+          &-outside {
+            background: linear-gradient(
+              to left,
+              #bd8430,
+              #d78732,
+              #d79d4a,
+              #c07d2a,
+              #bd8430
+            );
+            padding: 1px;
+            width: 120px;
+            height: 32px;
+          }
+          &-inside {
+            background-color: #fff;
+            width: 118px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -101,7 +101,7 @@ export default function VenueExplanation(props: VenueExplanationProps) {
         </div>
 
         <div className={style["section-button"]}>
-          <Button text={"Send invitation"} />
+          <Button text={"Live Streaming"} />
         </div>
       </div>
     </Card>

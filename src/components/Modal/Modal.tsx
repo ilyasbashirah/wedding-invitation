@@ -12,9 +12,9 @@ export default function Modal({
   children?: React.ReactNode;
   handleOutside?: any;
 }) {
-    // const ref = useRef(
-    //   typeof window !== undefined ? document.createElement("div") : <div />
-    // );
+  // const ref = useRef(
+  //   typeof window !== undefined ? document.createElement("div") : <div />
+  // );
 
   const ref = useRef(
     typeof window !== undefined ? window.document.createElement("div") : <div />
@@ -34,9 +34,9 @@ export default function Modal({
     // handleClose();
   });
 
-  //   useEffect(() => {
-  //     setState({...state,modal:true});
-  //   }, [state.modal]);
+  useEffect(() => {
+    setState({ ...state, modal: open });
+  }, [open]);
 
   return (
     <>

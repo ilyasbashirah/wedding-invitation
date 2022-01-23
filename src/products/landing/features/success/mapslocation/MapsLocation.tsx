@@ -29,7 +29,10 @@ export default function MapsLocation(props: MapsLocationProps) {
   const prayText: string = textDatas.doa[translate];
   const dateText: string = textDatas.date[translate];
   return (
-    <div className={style["section-maps-location-title"]}>
+    <div
+      id={"venue-maps-location"}
+      className={style["section-maps-location-title"]}
+    >
       <Typography
         variant={"heading-2-regular"}
         color={"cooper"}
@@ -38,7 +41,7 @@ export default function MapsLocation(props: MapsLocationProps) {
       >
         {titleText}
       </Typography>
-      <div className={style["section-maps-location-description"]} >
+      <div className={style["section-maps-location-description"]}>
         <Typography
           variant={"body-1-medium"}
           color={"onyx"}

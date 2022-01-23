@@ -7,9 +7,15 @@ import Section from "@/src/components/Section";
 import Button from "@/src/components/Button";
 import Modal from "@/src/components/Modal";
 
-export interface WeddingGiftProps {}
+export interface WeddingGiftProps {
+  onClick: () => void;
+}
 
-export default function WeddingGift(props: WeddingGiftProps) {
+export default function WeddingGift({
+  handleClickKirimHadiah,
+}: {
+  handleClickKirimHadiah: () => void;
+}) {
   const textDatas = {
     title: {
       en: "Wedding Gift",
@@ -37,8 +43,14 @@ export default function WeddingGift(props: WeddingGiftProps) {
   const description1Text: string = textDatas.description1[translate];
   const description2Text: string = textDatas.description2[translate];
   const textButton: string = textDatas.buttonKirim[translate];
+  const handleOpenModalKirimHadiah = () => {
+    if (handleClickKirimHadiah) {
+      handleClickKirimHadiah();
+    }
+  };
   return (
     <Banner
+      id={"wedding-gift"}
       height={"wedding-gift"}
       align={"flex-start"}
       justify={"center"}
@@ -69,10 +81,7 @@ export default function WeddingGift(props: WeddingGiftProps) {
         >
           {description2Text}
         </Typography>
-        <Button text={textButton} />
-        {/* <Modal>
-          <div>hallsasdadsa</div>
-        </Modal> */}
+        <Button text={textButton} onClick={handleOpenModalKirimHadiah} />
       </Section>
     </Banner>
   );

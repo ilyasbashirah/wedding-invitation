@@ -9,10 +9,8 @@
   z-index: 1010;
   &-content {
     position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    top: 50%;
+    left: 50%;
     z-index: 1020;
   }
 }

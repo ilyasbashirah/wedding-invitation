@@ -41,7 +41,7 @@ export default function HealthProtocol(props: HealthProtocolProps) {
   const descriptionText: string = textDatas.description[translate];
 
   return (
-    <>
+    <div id={"health-protocol"} className={style['container-health-protocol']} >
       <Typography
         variant={"heading-2-regular"}
         color={"cooper"}
@@ -79,6 +79,6 @@ export default function HealthProtocol(props: HealthProtocolProps) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

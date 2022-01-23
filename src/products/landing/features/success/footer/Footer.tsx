@@ -13,10 +13,11 @@ export default function Footer(props: FooterProps) {
         family={"montserrat"}
         variant={"body-1-semibold"}
         color={"dark-liver"}
-        align={'center'}
+        align={"center"}
       >
         {textFooter}
       </Typography>
+      <img src={"/desktop/footer/icons/whatsapp.svg"} alt={"whatsapp-icon"} />
     </div>
   );
 }
