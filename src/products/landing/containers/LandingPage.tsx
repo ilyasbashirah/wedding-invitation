@@ -17,32 +17,39 @@ export interface ILandingPage {}
 export default function LandingPage(props: ILandingPage) {
   const [state, setState] = useState({
     modalKirimHadiah: false,
+    language: "EN",
   });
 
   const handleKirimHadiah = () => {
     setState({ ...state, modalKirimHadiah: true });
   };
-  const handleCloseKirimHadiah = (condition:boolean) => {
+  const handleCloseKirimHadiah = (condition: boolean) => {
     setState({ ...state, modalKirimHadiah: condition });
+  };
+  const handleSwitchLanguage = (lang: string) => {
+    setState({ ...state, language: lang });
   };
   return (
     <div>
-      <NavigationbarWedding />
-      <Counting />
-      <BrideGroom />
+      <NavigationbarWedding switchLanguageTo={handleSwitchLanguage} />
+      <Counting language={state.language} />
+      <BrideGroom language={state.language} />
       <Banner
         height={"venue-and-protocol"}
         align={"flex-start"}
         background={"/desktop/venueandprotocol/venueandprotocol_background.svg"}
       >
         <Section gap={44} align={"flex-start"} justify={"center"}>
-          <MapsLocation />
-          <HealthProtocol />
+          <MapsLocation language={state.language} />
+          <HealthProtocol language={state.language} />
         </Section>
       </Banner>
-      <OurGallery />
-      <WeddingGift handleClickKirimHadiah={handleKirimHadiah} />
-      <Closing />
+      <OurGallery language={state.language} />
+      <WeddingGift
+        handleClickKirimHadiah={handleKirimHadiah}
+        language={state.language}
+      />
+      <Closing language={state.language} />
       <Footer />
 
       {/* modal payment */}

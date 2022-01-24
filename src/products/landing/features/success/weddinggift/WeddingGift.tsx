@@ -1,21 +1,30 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import style from "./style.module.scss";
 import Banner from "@/src/components/Banner";
 import Typography from "@/src/components/Typography";
 import { useRouter } from "next/router";
 import Section from "@/src/components/Section";
 import Button from "@/src/components/Button";
-import Modal from "@/src/components/Modal";
+// import Modal from "@/src/components/Modal";
 
 export interface WeddingGiftProps {
   onClick: () => void;
 }
 
 export default function WeddingGift({
+  language = "EN",
   handleClickKirimHadiah,
 }: {
+  language?: string;
   handleClickKirimHadiah: () => void;
 }) {
+  const [state, setState] = useState({
+    lang: "EN",
+  });
+  useEffect(() => {
+    setState({ ...state, lang: language });
+  }, [state.lang, language]);
+
   const textDatas = {
     title: {
       en: "Wedding Gift",
@@ -35,10 +44,7 @@ export default function WeddingGift({
     },
   };
 
-  const router = useRouter();
-
-  const routePathname: string = router.pathname;
-  const translate = routePathname.includes("en") ? "en" : "ina";
+  const translate = state.lang.toLowerCase().includes("en") ? "en" : "ina";
   const titleText: string = textDatas.title[translate];
   const description1Text: string = textDatas.description1[translate];
   const description2Text: string = textDatas.description2[translate];

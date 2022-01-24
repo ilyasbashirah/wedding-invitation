@@ -3,7 +3,11 @@ import style from "./style.module.scss";
 import Typography from "@/src/components/Typography";
 export interface NavigationbarWeddingProps {}
 
-export default function NavigationbarWedding(props: NavigationbarWeddingProps) {
+export default function NavigationbarWedding({
+  switchLanguageTo,
+}: {
+  switchLanguageTo?: (lang: string) => void;
+}) {
   const [state, setState] = useState({
     active: "",
     language: "EN",
@@ -49,14 +53,15 @@ export default function NavigationbarWedding(props: NavigationbarWeddingProps) {
     setState({ ...state, active: sectionId });
   };
 
-  const handleSwitchLanguage = () => {
-    let language = "EN";
-    if (state.language === "EN") {
-      language = "ID";
-    } else if (state.language === "ID") {
-      language = "EN";
+  const handleSwitchLanguage = (lang: string) => {
+    let bahasa = "EN";
+    if (lang === "EN") {
+      bahasa = "ID";
+    } else if (lang === "ID") {
+      bahasa = "EN";
     }
-    setState({ ...state, language: language });
+    setState({ ...state, language: bahasa });
+    switchLanguageTo(bahasa);
   };
   return (
     <div className={style["container-navbar"]}>
@@ -99,7 +104,7 @@ export default function NavigationbarWedding(props: NavigationbarWeddingProps) {
           {state.language === "EN" ? (
             <div
               className={style["button-translate"]}
-              onClick={handleSwitchLanguage}
+              onClick={() => handleSwitchLanguage(state.language)}
             >
               <Typography
                 variant={"button-2-bold"}
@@ -114,7 +119,7 @@ export default function NavigationbarWedding(props: NavigationbarWeddingProps) {
           ) : (
             <div
               className={style["button-translate"]}
-              onClick={handleSwitchLanguage}
+              onClick={() => handleSwitchLanguage(state.language)}
             >
               <img src={"/desktop/navigation_bar/translate/id_logo.svg"} />
               <Typography

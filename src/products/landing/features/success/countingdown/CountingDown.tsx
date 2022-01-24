@@ -7,18 +7,18 @@ import style from "./style.module.scss";
 
 export interface CountingProps {}
 
-export default function Counting(props: CountingProps) {
+export default function Counting({ language = "EN" }: { language?: string }) {
   type textDatas = {
     en: string;
-    ina: string;
+    id: string;
   };
   const countingDownDatas: textDatas = {
-    en: "ounting times for wedding party",
-    ina: "Menghitung menuju hari bahagia",
+    en: "Counting times for wedding party",
+    id: "Menghitung menuju hari bahagia",
   };
   const nameDatas: textDatas = {
     en: "Yasmin & Bas",
-    ina: "Yasmin & Bas",
+    id: "Yasmin & Bas",
   };
   type timeWordingType = {
     hari: textDatas;
@@ -29,44 +29,43 @@ export default function Counting(props: CountingProps) {
   const timerWordingDatas: timeWordingType = {
     hari: {
       en: "Days",
-      ina: "Hari",
+      id: "Hari",
     },
     jam: {
       en: "Hours",
-      ina: "Jam",
+      id: "Jam",
     },
     menit: {
       en: "Minutes",
-      ina: "Menit",
+      id: "Menit",
     },
     detik: {
       en: "Seconds",
-      ina: "Detik",
+      id: "Detik",
     },
   };
-  const router = useRouter();
-  const routePathname: string = router.pathname;
-  const nameText: string = routePathname.includes("en")
-    ? nameDatas.en
-    : nameDatas.ina;
-  const countingText: string = routePathname.includes("en")
-    ? countingDownDatas.en
-    : countingDownDatas.ina;
 
   type StateType = {
-    hari: number;
-    jam: number;
-    menit: number;
-    detik: number;
+    time: {
+      hari: number;
+      jam: number;
+      menit: number;
+      detik: number;
+    };
+
+    lang: string;
   };
 
   const yearNow = new Date().getFullYear();
   const difference = +new Date(`02/01/${yearNow}`) - +new Date();
   const [state, setState] = useState<StateType>({
-    hari: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    jam: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    menit: Math.floor((difference / 1000 / 60) % 60),
-    detik: Math.floor((difference / 1000) % 60),
+    time: {
+      hari: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      jam: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      menit: Math.floor((difference / 1000 / 60) % 60),
+      detik: Math.floor((difference / 1000) % 60),
+    },
+    lang: "EN",
   });
   useEffect(() => {
     const interval = setTimeout(() => {
@@ -78,29 +77,45 @@ export default function Counting(props: CountingProps) {
       const detikCalculation = Math.floor((selisih / 1000) % 60);
       setState({
         ...state,
-        hari: hariCalculation,
-        jam: jamCalculation,
-        menit: menitCalculation,
-        detik: detikCalculation,
+        time: {
+          ...state.time,
+          hari: hariCalculation,
+          jam: jamCalculation,
+          menit: menitCalculation,
+          detik: detikCalculation,
+        },
       });
     }, 1000);
     return () => clearTimeout(interval);
   }, []);
-  const hariText: string = routePathname.includes("en")
+  const nameText: string = state.lang.toLowerCase().includes("en")
+    ? nameDatas.en
+    : nameDatas.id;
+  const countingText: string = state.lang.toLowerCase().includes("en")
+    ? countingDownDatas.en
+    : countingDownDatas.id;
+  const hariText: string = state.lang.toLowerCase().includes("en")
     ? timerWordingDatas.hari.en
-    : timerWordingDatas.hari.ina;
-  const jamText: string = routePathname.includes("en")
+    : timerWordingDatas.hari.id;
+  const jamText: string = state.lang.toLowerCase().includes("en")
     ? timerWordingDatas.jam.en
-    : timerWordingDatas.jam.ina;
-  const menitText: string = routePathname.includes("en")
+    : timerWordingDatas.jam.id;
+  const menitText: string = state.lang.toLowerCase().includes("en")
     ? timerWordingDatas.menit.en
-    : timerWordingDatas.menit.ina;
-  const detikText: string = routePathname.includes("en")
+    : timerWordingDatas.menit.id;
+  const detikText: string = state.lang.toLowerCase().includes("en")
     ? timerWordingDatas.detik.en
-    : timerWordingDatas.detik.ina;
+    : timerWordingDatas.detik.id;
   const timeText = [hariText, jamText, menitText, detikText];
+
+  useEffect(() => {
+    setState({ ...state, lang: language });
+  }, [state.lang, language]);
   return (
-    <Banner height={'counting-down'} background={"/desktop/countingdown/countingdown_background.svg"}>
+    <Banner
+      height={"counting-down"}
+      background={"/desktop/countingdown/countingdown_background.svg"}
+    >
       <img
         src={"/desktop/countingdown/countingdown_illustration.svg"}
         alt={"bride-and-groom"}
@@ -114,11 +129,15 @@ export default function Counting(props: CountingProps) {
       >
         {nameText}
       </Typography>
-      <Typography family={"montserrat"} variant={"body-1-bold"} color={"onyx"}>
+      <Typography
+        family={"montserrat"}
+        variant={"body-1-medium"}
+        color={"onyx"}
+      >
         {countingText}
       </Typography>
       <div className={style["container-timer"]}>
-        {Object.keys(state).map((item, index) => (
+        {Object.keys(state.time).map((item, index) => (
           <div
             key={`box-timer-${timeText[index]}`}
             className={style["box-timer"]}
@@ -128,7 +147,7 @@ export default function Counting(props: CountingProps) {
               color={"cooper"}
               variant={"heading-3-bold"}
             >
-              {state[item]}
+              {state.time[item]}
             </Typography>
             <Typography
               family={"montserrat"}

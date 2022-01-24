@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./style.module.scss";
 import Banner from "@/src/components/Banner";
 import Typography from "@/src/components/Typography";
@@ -7,23 +7,26 @@ import Section from "@/src/components/Section";
 
 export interface OurGalleryProps {}
 
-export default function OurGallery(props: OurGalleryProps) {
+export default function OurGallery({ language = "EN" }: { language?: string }) {
   const [state, setState] = useState({
     carouselImage: "/desktop/gallery/photos/photos_left_1.png",
+    lang: "EN",
   });
+  useEffect(() => {
+    setState({ ...state, lang: language });
+  }, [state.lang, language]);
   const textDatas = {
     title: {
       en: "Our Gallery",
-      ina: "Our Gallery",
+      id: "Our Gallery",
     },
     description: {
       en: "We would like to share our beautiful memories to you",
-      ina: "Kami ingin membagikan momen bahagia yang tidak pernah terlupakan",
+      id: "Kami ingin membagikan momen bahagia yang tidak pernah terlupakan",
     },
   };
-  const router = useRouter();
-  const routePathname: string = router.pathname;
-  const translate = routePathname.includes("en") ? "en" : "ina";
+
+  const translate = state.lang.toLowerCase().includes("en") ? "en" : "id";
   const titleText: string = textDatas.title[translate];
   const descriptionText: string = textDatas.description[translate];
 
