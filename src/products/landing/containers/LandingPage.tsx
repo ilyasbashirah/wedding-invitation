@@ -45,11 +45,12 @@ export default function LandingPage(props: ILandingPage) {
       <Closing />
       <Footer />
 
-      {/* modal */}
+      {/* modal payment */}
       <PaymentAccountModal
         open={state.modalKirimHadiah}
         handleBatalKirimHadiah={handleCloseKirimHadiah}
       />
+      {/* end modal payment */}
     </div>
   );
 }

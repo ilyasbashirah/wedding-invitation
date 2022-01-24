@@ -28,6 +28,7 @@
   width: 816px;
   height: 498px;
   padding: 16px;
+  background-size: cover;
 }
 .box-icons-large-photos-left {
   display: grid;
@@ -37,6 +38,7 @@
   justify-items: flex-start;
   width: 100%;
   cursor: pointer;
+  
 }
 
 .box-icons-large-photos-right {
@@ -57,4 +59,5 @@
   justify-items: center;
   width: 392px;
   height: 150px;
+  background-size: cover;
 }

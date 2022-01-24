@@ -1,24 +1,34 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import style from "./style.module.scss";
 import Banner from "@/src/components/Banner";
+import Typography from "@/src/components/Typography";
 
 export interface ClosingProps {}
 
-export default function Closing(props: ClosingProps) {
+export default function Closing({ language = "EN" }: { language?: string }) {
+  const [state, setState] = useState({
+    active: "",
+    lang: "EN",
+  });
+  useEffect(() => {
+    setState({ ...state, lang: language });
+  }, [state.lang, language]);
   const textDatas = {
-    text1: {
-      en: `Our wedding wouldn't have been complete without the support of our family and friends.`,
-      ina: "Pernikahan kami tidak akan lengkap tanpa dukungan keluarga dan teman-teman kami.",
+    datas: {
+      text1: {
+        en: `Our wedding wouldn't have been complete without the support of our family and friends.`,
+        ina: "Pernikahan kami tidak akan lengkap tanpa dukungan keluarga dan teman-teman kami.",
+      },
+      text2: {
+        en: "Thank you for sharing our day!",
+        ina: "Terima kasih telah berbagi hari kami!",
+      },
+      text3: {
+        en: "With Love,",
+        ina: "Dengan Cinta,",
+      },
     },
-    text2: {
-      en: "Thank you for sharing our day!",
-      ina: "Terima kasih telah berbagi hari kami!",
-    },
-    text3: {
-      en: "With Love,",
-      ina: "Dengan Cinta,",
-    },
-    text4: {
+    from: {
       en: "Yasmin & Bas",
       ina: "Yasmin & Bas",
     },
@@ -26,7 +36,30 @@ export default function Closing(props: ClosingProps) {
   return (
     <Banner
       height={"closing"}
-      background={"/desktop/closing/closing_background.svg"}
-    />
+      align={'flex-end'}
+      background={"/desktop/closing/closing_background.png"}
+    >
+      {Object.keys(textDatas.datas).map((item: any, index: number) => {
+        return (
+          <Typography
+            key={`typography-${index}`}
+            family={"montserrat"}
+            variant={"body-1-semibold"}
+            color={"white"}
+            align={"center"}
+          >
+            {textDatas.datas[item][state.lang.toLowerCase()]}
+          </Typography>
+        );
+      })}
+      <Typography
+        family={"montserrat"}
+        variant={"subtitle-2-bold"}
+        color={"white"}
+        align={"center"}
+      >
+        {textDatas.from[state.lang.toLowerCase()]}
+      </Typography>
+    </Banner>
   );
 }

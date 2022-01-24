@@ -9,7 +9,7 @@ export interface OurGalleryProps {}
 
 export default function OurGallery(props: OurGalleryProps) {
   const [state, setState] = useState({
-    carouselImage: "/desktop/gallery/photos/photos_left_1.svg",
+    carouselImage: "/desktop/gallery/photos/photos_left_1.png",
   });
   const textDatas = {
     title: {
@@ -30,13 +30,13 @@ export default function OurGallery(props: OurGalleryProps) {
   const handleClickNextPhotos = () => {
     setState({
       ...state,
-      carouselImage: "/desktop/gallery/photos/photos_right_1.svg",
+      carouselImage: "/desktop/gallery/photos/photos_right_1.png",
     });
   };
   const handleClickPrevPhotos = () => {
     setState({
       ...state,
-      carouselImage: "/desktop/gallery/photos/photos_right_2.svg",
+      carouselImage: "/desktop/gallery/photos/photos_right_2.png",
     });
   };
   return (
@@ -98,19 +98,19 @@ export default function OurGallery(props: OurGalleryProps) {
             <div
               className={style["box-photos"]}
               style={{
-                backgroundImage: `url("/desktop/gallery/photos/photos_right_1.svg")`,
+                backgroundImage: `url("/desktop/gallery/photos/photos_right_1.png")`,
               }}
             />
             <div
               className={style["box-photos"]}
               style={{
-                backgroundImage: `url("/desktop/gallery/photos/photos_right_2.svg")`,
+                backgroundImage: `url("/desktop/gallery/photos/photos_right_2.png")`,
               }}
             />
             <div
               className={style["box-photos"]}
               style={{
-                backgroundImage: `url("/desktop/gallery/photos/photos_right_3.svg")`,
+                backgroundImage: `url("/desktop/gallery/photos/photos_right_3.png")`,
               }}
             >
               <Typography
