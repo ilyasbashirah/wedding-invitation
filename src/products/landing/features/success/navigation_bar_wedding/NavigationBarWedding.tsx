@@ -10,7 +10,7 @@ export default function NavigationbarWedding({
 }) {
   const [state, setState] = useState({
     active: "",
-    language: "EN",
+    language: "ID",
   });
   const menu = [
     {

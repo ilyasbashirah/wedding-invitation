@@ -12,14 +12,14 @@ export interface WeddingGiftProps {
 }
 
 export default function WeddingGift({
-  language = "EN",
+  language = "ID",
   handleClickKirimHadiah,
 }: {
   language?: string;
   handleClickKirimHadiah: () => void;
 }) {
   const [state, setState] = useState({
-    lang: "EN",
+    lang: "ID",
   });
   useEffect(() => {
     setState({ ...state, lang: language });
@@ -28,23 +28,23 @@ export default function WeddingGift({
   const textDatas = {
     title: {
       en: "Wedding Gift",
-      ina: "Wedding Gift",
+      id: "Hadiah Pernikahan",
     },
     description1: {
-      en: "For family and friends who would like to send cashless gift. We would be glad to receive it. ",
-      ina: "Tanpa mengurangi rasa hormat, apabila keluarga dan teman-teman ingin memberikan hadiah cashless. Kami akan dengan senang hati menerimanya",
+      en: "For family and friends who would like to send gift. We would be glad to receive it.",
+      id: "Tanpa mengurangi rasa hormat, apabila keluarga dan teman-teman ingin memberikan hadiah. Kami akan dengan senang hati menerimanya.",
     },
     description2: {
       en: "Tap the following button to send to us",
-      ina: "Silakan klik tombol berikut untuk mengirimkan",
+      id: "Silakan klik tombol berikut untuk mengirimkan hadiah",
     },
     buttonKirim: {
       en: "Send Gift",
-      ina: "Kirim Hadiah",
+      id: "Kirim Hadiah",
     },
   };
 
-  const translate = state.lang.toLowerCase().includes("en") ? "en" : "ina";
+  const translate = state.lang.toLowerCase().includes("en") ? "en" : "id";
   const titleText: string = textDatas.title[translate];
   const description1Text: string = textDatas.description1[translate];
   const description2Text: string = textDatas.description2[translate];

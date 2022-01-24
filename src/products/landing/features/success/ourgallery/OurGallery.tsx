@@ -7,10 +7,10 @@ import Section from "@/src/components/Section";
 
 export interface OurGalleryProps {}
 
-export default function OurGallery({ language = "EN" }: { language?: string }) {
+export default function OurGallery({ language = "ID" }: { language?: string }) {
   const [state, setState] = useState({
     carouselImage: "/desktop/gallery/photos/photos_left_1.png",
-    lang: "EN",
+    lang: "ID",
   });
   useEffect(() => {
     setState({ ...state, lang: language });
@@ -18,7 +18,7 @@ export default function OurGallery({ language = "EN" }: { language?: string }) {
   const textDatas = {
     title: {
       en: "Our Gallery",
-      id: "Our Gallery",
+      id: "Galeri Foto",
     },
     description: {
       en: "We would like to share our beautiful memories to you",

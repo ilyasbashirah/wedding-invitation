@@ -30,7 +30,7 @@ export default function VenueMaps(props: VenueMapsProps) {
         <GoogleMap
           mapContainerStyle={{
             width: 718,
-            height: 534,
+            height: 558,
             borderRadius: 20,
           }}
           center={latLng}

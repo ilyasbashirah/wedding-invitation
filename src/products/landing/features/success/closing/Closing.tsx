@@ -5,10 +5,10 @@ import Typography from "@/src/components/Typography";
 
 export interface ClosingProps {}
 
-export default function Closing({ language = "EN" }: { language?: string }) {
+export default function Closing({ language = "ID" }: { language?: string }) {
   const [state, setState] = useState({
     active: "",
-    lang: "EN",
+    lang: "ID",
   });
   useEffect(() => {
     setState({ ...state, lang: language });
@@ -20,8 +20,8 @@ export default function Closing({ language = "EN" }: { language?: string }) {
         id: "Pernikahan kami tidak akan lengkap tanpa dukungan keluarga dan teman-teman kami.",
       },
       text2: {
-        en: "Thank you for sharing our day!",
-        id: "Terima kasih telah berbagi hari kami!",
+        en: "Thank you for sharing happiness with us!",
+        id: "Terima kasih telah berbagi kebahagiaan bersama kami!",
       },
       text3: {
         en: "With Love,",

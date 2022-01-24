@@ -7,22 +7,36 @@ export interface PaymentAccountModalProps {}
 
 export default function PaymentAccountModal({
   open = false,
+  language = "ID",
   handleBatalKirimHadiah,
 }: {
   open?: boolean;
+  language?: string;
   handleBatalKirimHadiah?: (condition: boolean) => void;
 }) {
   const [state, setState] = useState({
     modal: true,
+    lang: "ID",
+    onpress: false,
   });
+  useEffect(() => {
+    setState({ ...state, lang: language });
+  }, [state.lang, language]);
   const textDatas = {
     title: {
-      id: "Choose one of the option below",
+      id: "Silahkan pilih salah satu",
       en: "Choose one of the option below",
+    },
+    copy: {
+      en: "Copy",
+      id: "Salin",
     },
     payment_method_options: {
       bank_account: {
-        title: "Bank Account",
+        title: {
+          en: "Bank Account",
+          id: "Akun Bank",
+        },
         datas: [
           {
             id: "BRI",
@@ -57,10 +71,25 @@ export default function PaymentAccountModal({
   };
 
   const handleCopyText = (text: string) => {
+    // setState({ ...state, onpress: true });
     if (typeof window !== undefined) {
       window.navigator.clipboard.writeText(text);
     }
   };
+  // const handleKeyDown = (e:any) => {
+  //   if(e.key==='Enter'){
+  //     console.log('ini apasih anjing')
+  //   }
+    
+  //   setState({ ...state, onpress: true });
+  // };
+  // const handleKeyUp = (e:any) => {
+  //   if(e.key==='Enter'){
+  //     console.log('ini kontol')
+  //   }
+   
+  //   setState({ ...state, onpress: false });
+  // };
   return (
     <Modal open={state.modal} handleOutside={handleCloseModal}>
       <div className={style["container-payment-account-modal"]}>
@@ -70,7 +99,7 @@ export default function PaymentAccountModal({
             variant={"body-1-bold"}
             color={"cooper"}
           >
-            {textDatas.title["en"]}
+            {textDatas.title[state.lang.toLowerCase()]}
           </Typography>
           <div
             onClick={handleCloseModal}
@@ -89,7 +118,11 @@ export default function PaymentAccountModal({
               variant={"body-1-bold"}
               color={"dark-liver"}
             >
-              {textDatas.payment_method_options.bank_account.title}
+              {
+                textDatas.payment_method_options.bank_account.title[
+                  state.lang.toLowerCase()
+                ]
+              }
             </Typography>
 
             <div className={style["container-bank-account-list"]}>
@@ -125,18 +158,32 @@ export default function PaymentAccountModal({
 
                     {/* button copy */}
                     <div
-                      className={`${style["button-copy-bank-account"]} ${style["button-copy-bank-account-outside"]}`}
+                      className={`${style["button-copy-bank-account"]} ${
+                        style[
+                          `button-copy-bank-account-outside--${
+                            state.onpress ? "secondary" : "primary"
+                          }`
+                        ]
+                      }`}
                       onClick={() => handleCopyText(item.rekening)}
+                      // onKeyDown={handleKeyDown}
+                      // onKeyUp={handleKeyUp}
                     >
                       <div
-                        className={`${style["button-copy-bank-account"]} ${style["button-copy-bank-account-inside"]}`}
+                        className={`${style["button-copy-bank-account"]} ${
+                          style[
+                            `button-copy-bank-account-inside--${
+                              state.onpress ? "secondary" : "primary"
+                            }`
+                          ]
+                        }`}
                       >
                         <Typography
                           family={"montserrat"}
                           variant={"caption-1-bold"}
                           color={"cooper"}
                         >
-                          {"Copy Number"}
+                          {textDatas.copy[state.lang.toLowerCase()]}
                         </Typography>
                       </div>
                     </div>

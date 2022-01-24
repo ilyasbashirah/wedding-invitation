@@ -6,7 +6,7 @@ import style from "./style.module.scss";
 
 export interface CountingProps {}
 
-export default function Counting({ language = "EN" }: { language?: string }) {
+export default function Counting({ language = "ID" }: { language?: string }) {
   type textDatas = {
     en: string;
     id: string;
@@ -64,7 +64,7 @@ export default function Counting({ language = "EN" }: { language?: string }) {
       menit: Math.floor((difference / 1000 / 60) % 60),
       detik: Math.floor((difference / 1000) % 60),
     },
-    lang: "EN",
+    lang: "ID",
   });
   useEffect(() => {
     const interval = setTimeout(() => {
@@ -86,7 +86,7 @@ export default function Counting({ language = "EN" }: { language?: string }) {
       });
     }, 1000);
     return () => clearTimeout(interval);
-  }, []);
+  }, [state.time]);
   const nameText: string = state.lang.toLowerCase().includes("en")
     ? nameDatas.en
     : nameDatas.id;

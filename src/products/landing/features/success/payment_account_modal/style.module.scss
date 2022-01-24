@@ -65,10 +65,14 @@
           display: grid;
           grid-template-columns: 80px 1fr;
           column-gap: 16px;
+          align-items: center;
+          align-content: center;
 
           .box-icon-bank-account {
             background: #ffffff;
             border: 1px solid #f2f2f2;
+            height: 80px;
+            width: 80px;
             box-sizing: border-box;
             border-radius: 10px;
             display: grid;
@@ -79,11 +83,11 @@
           }
           .box-description-bank-account {
             display: grid;
-            row-gap: 12px;
+            height: 80px;
             justify-content: flex-start;
             justify-items: flex-start;
-            align-items: flex-start;
-            align-content: flex-start;
+            align-items: center;
+            align-content: center;
           }
         }
 
@@ -95,7 +99,7 @@
           justify-items: center;
           border-radius: 100px;
           cursor: pointer;
-          &-outside {
+          &-outside--primary {
             background: linear-gradient(
               to left,
               #bd8430,
@@ -108,8 +112,27 @@
             width: 120px;
             height: 32px;
           }
-          &-inside {
+          &-inside--primary {
             background-color: #fff;
+            width: 118px;
+            height: 30px;
+          }
+
+          &-outside--secondary {
+            background-color: #fff;
+            padding: 1px;
+            width: 120px;
+            height: 32px;
+          }
+          &-inside--secondary {
+            background: linear-gradient(
+              to left,
+              #bd8430,
+              #d78732,
+              #d79d4a,
+              #c07d2a,
+              #bd8430
+            );
             width: 118px;
             height: 30px;
           }

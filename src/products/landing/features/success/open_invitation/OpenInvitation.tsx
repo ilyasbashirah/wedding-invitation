@@ -7,7 +7,7 @@ import style from "./style.module.scss";
 export interface OpenInvitationProps {}
 
 export default function OpenInvitation({
-  language = "EN",
+  language = "ID",
   openInvitation,
 }: {
   language?: string;
@@ -36,7 +36,7 @@ export default function OpenInvitation({
   };
 
   const [state, setState] = useState<StateType>({
-    lang: "EN",
+    lang: "ID",
   });
 
   const nameText: string = state.lang.toLowerCase().includes("en")
@@ -82,19 +82,6 @@ export default function OpenInvitation({
             color={"onyx"}
           >
             {"01 Februari 2022 "}
-          </Typography>
-        </div>
-
-        <div className={style["divider"]} />
-
-        <div className={style["box-list"]}>
-          <img src={"/open_invitation/clock.svg"} />
-          <Typography
-            family={"montserrat"}
-            variant={"body-1-medium"}
-            color={"onyx"}
-          >
-            {"07.30 WIB"}
           </Typography>
         </div>
       </div>

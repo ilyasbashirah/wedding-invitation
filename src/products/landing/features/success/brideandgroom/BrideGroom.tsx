@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import style from "./style.module.scss";
 import Banner from "@/src/components/Banner";
 import Section from "@/src/components/Section";
@@ -63,6 +62,9 @@ export default function BrideGroom({ language = "EN" }: { language?: string }) {
   const brideIdentityText: string = brideAndGroomDatas.brideIdentity[translate];
   const groomNameText: string = brideAndGroomDatas.groomName[translate];
   const groomIdentityText: string = brideAndGroomDatas.groomIdentity[translate];
+  const handleClickToInstagram = (akun: string) => {
+    window.location.replace(`https://instagram.com/${akun}`);
+  };
   return (
     <Banner
       id={"bride-and-groom"}
@@ -100,7 +102,14 @@ export default function BrideGroom({ language = "EN" }: { language?: string }) {
             </Typography>
             <Section gap={0} align={"flex-start"} justify={"center"}>
               <div className={style["container-bride-photos"]}>
-                <img src={"/desktop/brideandgroom/brideandgroom_yasmin.png"} />
+                <div
+                  className={style["button-click-to-instagram"]}
+                  onClick={() => handleClickToInstagram("yasminsyrf")}
+                >
+                  <img
+                    src={"/desktop/brideandgroom/brideandgroom_yasmin.png"}
+                  />
+                </div>
                 <div className={style["container-identity"]}>
                   <Typography
                     variant={"subtitle-1-bold"}
@@ -136,7 +145,12 @@ export default function BrideGroom({ language = "EN" }: { language?: string }) {
                     {groomIdentityText}
                   </Typography>
                 </div>
-                <img src={"/desktop/brideandgroom/brideandgroom_bas.png"} />
+                <div
+                  className={style["button-click-to-instagram"]}
+                  onClick={() => handleClickToInstagram("milyasbpa")}
+                >
+                  <img src={"/desktop/brideandgroom/brideandgroom_bas.png"} />
+                </div>
               </div>
             </Section>
           </Section>

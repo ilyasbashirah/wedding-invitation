@@ -19,7 +19,7 @@ export default function LandingPage(props: ILandingPage) {
 
   const [state, setState] = useState({
     modalKirimHadiah: false,
-    language: "EN",
+    language: "ID",
     audio: "",
     openInvitation: false,
   });
@@ -66,6 +66,7 @@ export default function LandingPage(props: ILandingPage) {
 
           {/* modal payment */}
           <PaymentAccountModal
+            language={state.language}
             open={state.modalKirimHadiah}
             handleBatalKirimHadiah={handleCloseKirimHadiah}
           />
