@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import Typography from "@/src/components/Typography";
 import Banner from "@/src/components/Banner";
 

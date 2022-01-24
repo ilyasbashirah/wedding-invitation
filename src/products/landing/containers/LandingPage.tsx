@@ -11,13 +11,17 @@ import Section from "@/src/components/Section";
 import Footer from "@/src/products/landing/features/success/footer";
 import NavigationbarWedding from "@/src/products/landing/features/success/navigation_bar_wedding/NavigationBarWedding";
 import PaymentAccountModal from "@/src/products/landing/features/success/payment_account_modal/PaymentAccountModal";
-
+import OpenInvitation from "../features/success/open_invitation/OpenInvitation";
 export interface ILandingPage {}
 
 export default function LandingPage(props: ILandingPage) {
+  const sound = "https://images.bribrain.com/bas/wedding-audio.mp3";
+
   const [state, setState] = useState({
     modalKirimHadiah: false,
     language: "EN",
+    audio: "",
+    openInvitation: false,
   });
 
   const handleKirimHadiah = () => {
@@ -29,35 +33,52 @@ export default function LandingPage(props: ILandingPage) {
   const handleSwitchLanguage = (lang: string) => {
     setState({ ...state, language: lang });
   };
+  const handleOpenInvitation = () => {
+    new Audio(sound).play();
+    setState({ ...state, openInvitation: true });
+  };
   return (
     <div>
-      <NavigationbarWedding switchLanguageTo={handleSwitchLanguage} />
-      <Counting language={state.language} />
-      <BrideGroom language={state.language} />
-      <Banner
-        height={"venue-and-protocol"}
-        align={"flex-start"}
-        background={"/desktop/venueandprotocol/venueandprotocol_background.svg"}
-      >
-        <Section gap={44} align={"flex-start"} justify={"center"}>
-          <MapsLocation language={state.language} />
-          <HealthProtocol language={state.language} />
-        </Section>
-      </Banner>
-      <OurGallery language={state.language} />
-      <WeddingGift
-        handleClickKirimHadiah={handleKirimHadiah}
-        language={state.language}
-      />
-      <Closing language={state.language} />
-      <Footer />
+      {state.openInvitation ? (
+        <>
+          <NavigationbarWedding switchLanguageTo={handleSwitchLanguage} />
+          <Counting language={state.language} />
+          <BrideGroom language={state.language} />
+          <Banner
+            height={"venue-and-protocol"}
+            align={"flex-start"}
+            background={
+              "/desktop/venueandprotocol/venueandprotocol_background.svg"
+            }
+          >
+            <Section gap={44} align={"flex-start"} justify={"center"}>
+              <MapsLocation language={state.language} />
+              <HealthProtocol language={state.language} />
+            </Section>
+          </Banner>
+          <OurGallery language={state.language} />
+          <WeddingGift
+            handleClickKirimHadiah={handleKirimHadiah}
+            language={state.language}
+          />
+          <Closing language={state.language} />
+          <Footer />
 
-      {/* modal payment */}
-      <PaymentAccountModal
-        open={state.modalKirimHadiah}
-        handleBatalKirimHadiah={handleCloseKirimHadiah}
-      />
-      {/* end modal payment */}
+          {/* modal payment */}
+          <PaymentAccountModal
+            open={state.modalKirimHadiah}
+            handleBatalKirimHadiah={handleCloseKirimHadiah}
+          />
+          {/* end modal payment */}
+        </>
+      ) : (
+        <>
+          <OpenInvitation
+            language={state.language}
+            openInvitation={handleOpenInvitation}
+          />
+        </>
+      )}
     </div>
   );
 }
