@@ -7,9 +7,20 @@ import Section from "@/src/components/Section";
 
 export interface OurGalleryProps {}
 
-export default function OurGallery({ language = "ID" }: { language?: string }) {
+export default function OurGallery({
+  language = "ID",
+  activeId = "",
+  clickSelengkapnya,
+}: {
+  language?: string;
+  activeId?: string;
+  clickSelengkapnya?: () => void;
+}) {
   const [state, setState] = useState({
-    carouselImage: "/desktop/gallery/photos/photos_left_1.png",
+    carouselImagePositionBefore: 10,
+    carouselImagePosition: 1,
+    carouselImage: "/desktop/gallery/carousel/photo_1.png",
+    carousel2Image: "/desktop/gallery/carousel2/photo_2.png",
     lang: "ID",
   });
   useEffect(() => {
@@ -29,18 +40,62 @@ export default function OurGallery({ language = "ID" }: { language?: string }) {
   const translate = state.lang.toLowerCase().includes("en") ? "en" : "id";
   const titleText: string = textDatas.title[translate];
   const descriptionText: string = textDatas.description[translate];
-
-  const handleClickNextPhotos = () => {
+  const maxCarouselImage = 10;
+  const minCarouselImage = 1;
+  const handleClickNextPhotos = (position: number) => {
     setState({
       ...state,
-      carouselImage: "/desktop/gallery/photos/photos_right_1.png",
+      carouselImagePositionBefore:
+        state.carouselImagePositionBefore === maxCarouselImage
+          ? minCarouselImage
+          : state.carouselImagePositionBefore + 1,
+      carouselImagePosition:
+        position >= maxCarouselImage ? minCarouselImage : position + 1,
+      carouselImage:
+        position >= maxCarouselImage
+          ? `/desktop/gallery/carousel/photo_${minCarouselImage}.png`
+          : `/desktop/gallery/carousel/photo_${position + 1}.png`,
     });
   };
-  const handleClickPrevPhotos = () => {
+  const handleClickPrevPhotos = (position: number) => {
     setState({
       ...state,
-      carouselImage: "/desktop/gallery/photos/photos_right_2.png",
+      carouselImagePositionBefore:
+        state.carouselImagePositionBefore === minCarouselImage
+          ? maxCarouselImage
+          : position - 1,
+      carouselImagePosition:
+        position <= minCarouselImage ? maxCarouselImage : position - 1,
+      carouselImage:
+        position <= minCarouselImage
+          ? `/desktop/gallery/carousel/photo_${maxCarouselImage}.png`
+          : `/desktop/gallery/carousel/photo_${position - 1}.png`,
     });
+  };
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      setState({
+        ...state,
+        carouselImagePositionBefore:
+          state.carouselImagePositionBefore === maxCarouselImage
+            ? minCarouselImage
+            : state.carouselImagePositionBefore + 1,
+        carouselImagePosition:
+          state.carouselImagePosition >= maxCarouselImage
+            ? minCarouselImage
+            : state.carouselImagePosition + 1,
+        carouselImage:
+          state.carouselImagePosition >= maxCarouselImage
+            ? `/desktop/gallery/carousel/photo_${minCarouselImage}.png`
+            : `/desktop/gallery/carousel/photo_${
+                state.carouselImagePosition + 1
+              }.png`,
+      });
+    }, 3500);
+    return () => clearTimeout(interval);
+  }, [state.carouselImagePosition]);
+  const handleClickSelengkapnya = () => {
+    clickSelengkapnya();
   };
   return (
     <Banner
@@ -70,14 +125,20 @@ export default function OurGallery({ language = "ID" }: { language?: string }) {
         <div className={style["container-box-photos-left"]}>
           <div>
             <div
-              className={style["box-large-photos"]}
+              className={`${style["box-large-photos"]} ${
+                state.carouselImagePositionBefore !==
+                  state.carouselImagePosition &&
+                style["box-photos--fade-in-right"]
+              }`}
               style={{
                 backgroundImage: `url("${state.carouselImage}")`,
               }}
             >
               <div
                 className={style["box-icons-large-photos-left"]}
-                onClick={handleClickPrevPhotos}
+                onClick={() =>
+                  handleClickPrevPhotos(state.carouselImagePosition)
+                }
               >
                 <img
                   src={"/desktop/icons/arrow_left.svg"}
@@ -87,7 +148,9 @@ export default function OurGallery({ language = "ID" }: { language?: string }) {
               </div>
               <div
                 className={style["box-icons-large-photos-right"]}
-                onClick={handleClickNextPhotos}
+                onClick={() =>
+                  handleClickNextPhotos(state.carouselImagePosition)
+                }
               >
                 <img
                   src={"/desktop/icons/arrow_right.svg"}
@@ -99,22 +162,47 @@ export default function OurGallery({ language = "ID" }: { language?: string }) {
           </div>
           <div className={style["container-box-photos-right"]}>
             <div
-              className={style["box-photos"]}
+              className={`${style["box-photos"]} ${
+                state.carouselImagePositionBefore !==
+                  state.carouselImagePosition &&
+                style["box-photos--fade-in-bottom"]
+              }`}
               style={{
-                backgroundImage: `url("/desktop/gallery/photos/photos_right_1.png")`,
+                backgroundImage: `url("/desktop/gallery/carousel_2/photo_${
+                  state.carouselImagePosition + 1 > maxCarouselImage
+                    ? (state.carouselImagePosition + 1) % 10
+                    : state.carouselImagePosition + 1
+                }.png")`,
               }}
             />
             <div
-              className={style["box-photos"]}
+              className={`${style["box-photos"]} ${
+                state.carouselImagePositionBefore !==
+                  state.carouselImagePosition &&
+                style["box-photos--fade-in-bottom"]
+              }`}
               style={{
-                backgroundImage: `url("/desktop/gallery/photos/photos_right_2.png")`,
+                backgroundImage: `url("/desktop/gallery/carousel_2/photo_${
+                  state.carouselImagePosition + 2 > maxCarouselImage
+                    ? (state.carouselImagePosition + 2) % 10
+                    : state.carouselImagePosition + 2
+                }.png")`,
               }}
             />
             <div
-              className={style["box-photos"]}
+              className={`${style["box-photos"]} ${
+                state.carouselImagePositionBefore !==
+                  state.carouselImagePosition &&
+                style["box-photos--fade-in-bottom"]
+              }`}
               style={{
-                backgroundImage: `url("/desktop/gallery/photos/photos_right_3.png")`,
+                backgroundImage: `url("/desktop/gallery/carousel_2/photo_${
+                  state.carouselImagePosition + 3 > maxCarouselImage
+                    ? (state.carouselImagePosition + 3) % 10
+                    : state.carouselImagePosition + 3
+                }.png")`,
               }}
+              onClick={handleClickSelengkapnya}
             >
               <Typography
                 variant={"body-1-semibold"}

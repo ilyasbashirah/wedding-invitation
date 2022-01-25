@@ -71,25 +71,11 @@ export default function PaymentAccountModal({
   };
 
   const handleCopyText = (text: string) => {
-    // setState({ ...state, onpress: true });
     if (typeof window !== undefined) {
       window.navigator.clipboard.writeText(text);
     }
   };
-  // const handleKeyDown = (e:any) => {
-  //   if(e.key==='Enter'){
-  //     console.log('ini apasih anjing')
-  //   }
-    
-  //   setState({ ...state, onpress: true });
-  // };
-  // const handleKeyUp = (e:any) => {
-  //   if(e.key==='Enter'){
-  //     console.log('ini kontol')
-  //   }
-   
-  //   setState({ ...state, onpress: false });
-  // };
+  
   return (
     <Modal open={state.modal} handleOutside={handleCloseModal}>
       <div className={style["container-payment-account-modal"]}>
@@ -166,8 +152,6 @@ export default function PaymentAccountModal({
                         ]
                       }`}
                       onClick={() => handleCopyText(item.rekening)}
-                      // onKeyDown={handleKeyDown}
-                      // onKeyUp={handleKeyUp}
                     >
                       <div
                         className={`${style["button-copy-bank-account"]} ${

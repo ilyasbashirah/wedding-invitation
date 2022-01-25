@@ -1,0 +1,65 @@
+.header-carousel-modal {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 100%;
+  // position: relative;
+  padding: 16px;
+}
+
+.button-close-modal {
+  cursor: pointer;
+}
+
+.grid-photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  row-gap: 36px;
+}
+
+.container-gallery-photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  // height: 100%;
+
+  // position: absolute;
+  // z-index: 9994;
+  .icon-arrow-left {
+    z-index: 9991;
+    position: fixed;
+    top: calc(50% - 70px);
+    left: calc(50% - 400px);
+    bottom: 0px;
+    cursor: pointer;
+  }
+  .icon-arrow-right {
+    z-index: 9700;
+    position: fixed;
+    top: calc(50% - 70px);
+    right: calc(50% - 400px);
+    bottom: 0px;
+    cursor: pointer;
+  }
+}
+
+.list-of-photos {
+  display: flex;
+  grid-template-columns: repeat(10, 392);
+  width: 100vw;
+  height: 150px;
+  column-gap: 16px;
+  overflow: auto;
+  cursor: pointer;
+  .rectangle-box-photo {
+    border: 1px solid #b87828;
+    border-radius: 20px;
+  }
+}

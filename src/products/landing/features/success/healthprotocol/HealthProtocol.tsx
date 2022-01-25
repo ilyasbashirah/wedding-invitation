@@ -7,8 +7,10 @@ export interface HealthProtocolProps {}
 
 export default function HealthProtocol({
   language = "ID",
+  activeId = "",
 }: {
   language?: string;
+  activeId?: string;
 }) {
   const [state, setState] = useState({
     lang: "ID",

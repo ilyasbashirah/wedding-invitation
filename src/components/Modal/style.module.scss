@@ -1,8 +1,16 @@
 .modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 8px;
-  z-index: 1020;
+  z-index: 9991;
+  // width: 100vw;
+  // height: 100vh;
+  // overflow: auto;
+  // top: 72px;
+  // left: 120px;
+  // right: 120px;
+  &--transform {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

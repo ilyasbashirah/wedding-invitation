@@ -31,12 +31,9 @@ export default function OpenInvitation({
     id: "Buka Undangan",
   };
 
-  type StateType = {
-    lang: string;
-  };
-
-  const [state, setState] = useState<StateType>({
+  const [state, setState] = useState({
     lang: "ID",
+    slideTop: false,
   });
 
   const nameText: string = state.lang.toLowerCase().includes("en")
@@ -52,10 +49,12 @@ export default function OpenInvitation({
   }, [state.lang, language]);
 
   const handleOpenInvitation = () => {
+    setState({ ...state, slideTop: true });
     openInvitation();
   };
   return (
     <Banner
+      slideTop={state.slideTop}
       height={"open-invitation"}
       background={"/desktop/countingdown/countingdown_background.svg"}
     >

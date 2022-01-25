@@ -5,7 +5,13 @@ import Typography from "@/src/components/Typography";
 
 export interface ClosingProps {}
 
-export default function Closing({ language = "ID" }: { language?: string }) {
+export default function Closing({
+  language = "ID",
+  activeId = "",
+}: {
+  language?: string;
+  activeId?: string;
+}) {
   const [state, setState] = useState({
     active: "",
     lang: "ID",
@@ -36,7 +42,7 @@ export default function Closing({ language = "ID" }: { language?: string }) {
   return (
     <Banner
       height={"closing"}
-      align={'flex-end'}
+      align={"flex-end"}
       background={"/desktop/closing/closing_background.png"}
     >
       {Object.keys(textDatas.datas).map((item: any, index: number) => {

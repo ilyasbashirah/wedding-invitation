@@ -7,10 +7,12 @@ export default function Modal({
   open = false,
   children,
   handleOutside,
+  fullWidth = false,
 }: {
   open?: boolean;
   children?: React.ReactNode;
   handleOutside?: any;
+  fullWidth?: boolean;
 }) {
   const [state, setState] = useState({
     modal: false,
@@ -32,7 +34,15 @@ export default function Modal({
   return (
     <>
       <Backdrop open={state.modal} handleCloseContent={handleClose}>
-        {state.modal && <div className={style.modal}>{children}</div>}
+        {state.modal && (
+          <div
+            className={`${style.modal} ${
+              fullWidth === false && style["modal--transform"]
+            } `}
+          >
+            {children}
+          </div>
+        )}
       </Backdrop>
     </>
   );

@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./style.module.scss";
 import Typography from "@/src/components/Typography";
 export interface NavigationbarWeddingProps {}
 
 export default function NavigationbarWedding({
+  activeId = "",
   switchLanguageTo,
 }: {
+  activeId?: string;
   switchLanguageTo?: (lang: string) => void;
 }) {
   const [state, setState] = useState({
     active: "",
     language: "ID",
   });
+  useEffect(() => {
+    setState({ ...state, active: activeId });
+  }, [state.active, activeId]);
+  
   const menu = [
     {
       title: "Couple",

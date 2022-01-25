@@ -6,7 +6,13 @@ import style from "./style.module.scss";
 
 export interface CountingProps {}
 
-export default function Counting({ language = "ID" }: { language?: string }) {
+export default function Counting({
+  language = "ID",
+  activeId = "",
+}: {
+  language?: string;
+  activeId?: string;
+}) {
   type textDatas = {
     en: string;
     id: string;

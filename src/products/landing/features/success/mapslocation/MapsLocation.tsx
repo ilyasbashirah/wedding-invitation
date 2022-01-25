@@ -8,7 +8,9 @@ export interface MapsLocationProps {}
 
 export default function MapsLocation({
   language = "ID",
+  activeId = "",
 }: {
+  activeId?: string;
   language?: string;
 }) {
   const [state, setState] = useState({

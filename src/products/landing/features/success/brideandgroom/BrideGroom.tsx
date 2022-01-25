@@ -5,7 +5,13 @@ import Section from "@/src/components/Section";
 import Typography from "@/src/components/Typography";
 export interface BrideGroomProps {}
 
-export default function BrideGroom({ language = "EN" }: { language?: string }) {
+export default function BrideGroom({
+  language = "EN",
+  activeId = "",
+}: {
+  language?: string;
+  activeId?: string;
+}) {
   const [state, setState] = useState({
     lang: "EN",
   });

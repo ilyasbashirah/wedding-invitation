@@ -12,9 +12,11 @@ export interface WeddingGiftProps {
 }
 
 export default function WeddingGift({
+  activeId = "",
   language = "ID",
   handleClickKirimHadiah,
 }: {
+  activeId?: string;
   language?: string;
   handleClickKirimHadiah: () => void;
 }) {

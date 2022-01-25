@@ -6,7 +6,20 @@
   background-repeat: no-repeat;
   display: grid;
   row-gap: 32px;
-  padding:80px 100px;
+  padding: 80px 100px;
+  &--slide-out-top {
+    -webkit-animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+      both;
+    animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  }
+  &--open-invitation {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 9999;
+  }
 }
 
 @mixin banner-align($map) {
@@ -42,18 +55,18 @@
 }
 
 @mixin banner-height($map) {
-    @each $data-name, $data-selected in $map {
-      @if not map-has-key($map, $data-name) {
-        &--#{$data-name} {
-          height: 1024px;
-        }
-      } @else {
-        &--#{$data-name} {
-          height: $data-selected;
-        }
+  @each $data-name, $data-selected in $map {
+    @if not map-has-key($map, $data-name) {
+      &--#{$data-name} {
+        height: 1024px;
+      }
+    } @else {
+      &--#{$data-name} {
+        height: $data-selected;
       }
     }
   }
+}
 
 .banner-align {
   @include banner-align($grid-align);
@@ -65,4 +78,29 @@
 
 .banner-height {
   @include banner-height($banner-height);
+}
+
+@-webkit-keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+@keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
 }
