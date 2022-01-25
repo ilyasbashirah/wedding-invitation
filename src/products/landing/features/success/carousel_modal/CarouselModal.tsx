@@ -51,7 +51,7 @@ export default function CarouselModal({
     setState({ ...state, active: activeIndex });
   };
   const tenListArray = Array.from({ length: 10 }, (_, i) => i + 1);
-  console.log(state.openModal,'ini apa')
+  
   return (
     <div>
       <Modal
@@ -59,7 +59,7 @@ export default function CarouselModal({
         fullWidth={false}
         handleOutside={handleCloseModal}
       >
-        <div className={style["header-carousel-modal"]}>
+        <div className={style["header-carousel-modal"]} onClick={handleCloseModal} >
           <div
             className={style["button-close-modal"]}
             onClick={handleCloseModal}
@@ -73,7 +73,7 @@ export default function CarouselModal({
         </div>
 
         {/* grid photos */}
-        <div className={style["grid-photos"]}>
+        <div className={style["grid-photos"]}  onClick={handleCloseModal}>
           <div className={style["container-gallery-photos"]}>
             <div
               className={style["icon-arrow-right"]}

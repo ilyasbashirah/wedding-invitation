@@ -4,11 +4,11 @@ import style from "./style.module.scss";
 export default function Backdrop({
   open = false,
   children,
-  handleCloseContent
+  handleCloseContent,
 }: {
   open?: boolean;
   children?: React.ReactNode;
-  handleCloseContent?:()=>void
+  handleCloseContent?: () => void;
 }) {
   const [state, setState] = useState({
     content: false,
@@ -16,15 +16,16 @@ export default function Backdrop({
   useEffect(() => {
     setState({ ...state, content: open });
   }, [state.content, open]);
-  const handleClose = () => {    
+  const handleClose = () => {
+    console.log('testststst')
     setState({ ...state, content: false });
-    handleCloseContent()
+    handleCloseContent();
   };
   return (
     <>
       {state.content && (
         <>
-          <div className={style.backdrop} onClick={handleClose}></div>
+          <div className={style.backdrop} onClick={handleClose} />
           <div className={style["backdrop-content"]}>{children}</div>
         </>
       )}

@@ -59,6 +59,7 @@ export default function LandingPage(props: ILandingPage) {
   const handleCloseModalSelengkapnya = () => {
     setState({ ...state, modalSelengkapnya: false });
   };
+ 
   return (
     <div>
       <OpenInvitation
