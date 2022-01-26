@@ -72,6 +72,9 @@ export default function VenueExplanation({
       id: "Siaran Langsung",
     },
   };
+  const handleClickLinkStreaming = () => {
+    window.location.replace("https://youtu.be/h2_no1Rr1rw");
+  };
   return (
     <Card>
       <div className={style["container-venue-explanation"]}>
@@ -136,7 +139,10 @@ export default function VenueExplanation({
           </div>
         </div>
 
-        <div className={style["section-button"]}>
+        <div
+          className={style["section-button"]}
+          onClick={handleClickLinkStreaming}
+        >
           <Button text={textDatas.buttonText[state.lang.toLowerCase()]} />
         </div>
       </div>
