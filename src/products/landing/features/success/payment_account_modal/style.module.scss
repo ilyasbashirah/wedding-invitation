@@ -91,6 +91,14 @@
           }
         }
 
+        .box-ewallet-account-list {
+          display: grid;
+          grid-template-columns: 126px 1fr;
+          column-gap: 16px;
+          align-items: center;
+          align-content: center;
+        }
+
         .button-copy-bank-account {
           display: grid;
           align-content: center;

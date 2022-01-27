@@ -58,6 +58,20 @@ export default function PaymentAccountModal({
           },
         ],
       },
+      e_wallet: {
+        title: {
+          en: "E - Wallet",
+          id: "E - Wallet",
+        },
+        datas: [
+          {
+            id: "E - Wallet",
+            name: "Yasmin Meidiana Syarif",
+            rekening: "082218342044",
+            icon: "/desktop/weddinggift/e_wallet/e_wallet.svg",
+          },
+        ],
+      },
     },
   };
 
@@ -75,7 +89,7 @@ export default function PaymentAccountModal({
       window.navigator.clipboard.writeText(text);
     }
   };
-  
+
   return (
     <Modal open={state.modal} handleOutside={handleCloseModal}>
       <div className={style["container-payment-account-modal"]}>
@@ -178,6 +192,85 @@ export default function PaymentAccountModal({
             </div>
 
             {/* copy wallet another */}
+            <div className={style["bank-account-payment-method"]}>
+              <Typography
+                family={"montserrat"}
+                variant={"body-1-bold"}
+                color={"dark-liver"}
+              >
+                {
+                  textDatas.payment_method_options.bank_account.title[
+                    state.lang.toLowerCase()
+                  ]
+                }
+              </Typography>
+
+              <div className={style["container-bank-account-list"]}>
+                {textDatas.payment_method_options.e_wallet.datas.map(
+                  (item: any, index: number) => (
+                    <div className={style["box-copy-bank-account-list"]}>
+                      <div
+                        key={`box-bank-account-list-${index}`}
+                        className={style["box-ewallet-account-list"]}
+                      >
+                        <div className={style["box-icon-bank-account"]}>
+                          <img src={item.icon} alt={"icon-bank-account"} />
+                        </div>
+
+                        <div className={style["box-description-bank-account"]}>
+                          <Typography
+                            family={"montserrat"}
+                            variant={"body-3-bold"}
+                            color={"dark-liver"}
+                          >
+                            {item.name}
+                          </Typography>
+
+                          <Typography
+                            family={"montserrat"}
+                            variant={"body-3-medium"}
+                            color={"gray"}
+                          >
+                            {item.rekening}
+                          </Typography>
+                        </div>
+                      </div>
+
+                      {/* button copy */}
+                      <div
+                        className={`${style["button-copy-bank-account"]} ${
+                          style[
+                            `button-copy-bank-account-outside--${
+                              state.onpress ? "secondary" : "primary"
+                            }`
+                          ]
+                        }`}
+                        onClick={() => handleCopyText(item.rekening)}
+                      >
+                        <div
+                          className={`${style["button-copy-bank-account"]} ${
+                            style[
+                              `button-copy-bank-account-inside--${
+                                state.onpress ? "secondary" : "primary"
+                              }`
+                            ]
+                          }`}
+                        >
+                          <Typography
+                            family={"montserrat"}
+                            variant={"caption-1-bold"}
+                            color={"cooper"}
+                          >
+                            {textDatas.copy[state.lang.toLowerCase()]}
+                          </Typography>
+                        </div>
+                      </div>
+                      {/* end button copy */}
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
