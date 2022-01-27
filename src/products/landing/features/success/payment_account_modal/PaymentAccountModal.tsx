@@ -119,7 +119,7 @@ export default function PaymentAccountModal({
               color={"dark-liver"}
             >
               {
-                textDatas.payment_method_options.bank_account.title[
+                textDatas.payment_method_options.e_wallet.title[
                   state.lang.toLowerCase()
                 ]
               }
